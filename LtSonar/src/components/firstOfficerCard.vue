@@ -9,16 +9,12 @@
 
     <div class="fo-card-style">
         <div class="fo-card-btns">  
-            <h3 class="fo-card-title">Title</h3>      
-            <div class="fo-card-image"></div>
-            <div class="fo-side-btn fo-side-btn-1 fo-side-btn-active"></div>
-            <div class="fo-side-btn fo-side-btn-2 fo-side-btn-active"></div>
-            <div class="fo-side-btn fo-side-btn-3"></div>
-            <div class="fo-side-btn fo-side-btn-4"></div>
-            <div class="fo-side-btn fo-side-btn-5"></div>
+            <h3 class="fo-card-title">{{title}}</h3>      
+            <div class="fo-card-image" :style="FOImage"></div>
+
+            <div v-for="index in numberOfItems" :key="index" class="fo-side-btn fo-side-btn-1"></div>
         </div>
         <div class="fo-card-info">
-            
         </div>
     </div>
 
@@ -33,8 +29,19 @@
             this.vm = {
                 someData: "Card"
             }
+
             this.props = { 
-                title: String
+                title: String,
+                imageUrl: String,
+                numberOfItems: Number
+            }
+
+            this.computed = {
+                FOImage() {
+                        return {
+                            backgroundImage: `url(${this.imageUrl})`
+                        };
+                    }
             }
         }
 
@@ -55,7 +62,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        height: 400px;
+        height: 350px;
         width: 300px;
         background-color: #444444;
         border: 2px solid white;
@@ -67,8 +74,8 @@
         padding: 20px;
         display: block;
         position:relative;
-        width:300px;
-        height:300px;
+        width: 250px;
+        height: 300px;
     }  
 
     .fo-card-title {
@@ -78,28 +85,27 @@
         text-transform: uppercase;
     }
 
-    .fo-card-title::before {
+    /* .fo-card-title::before {
         content: "";
         position: absolute;
         display: block;
         width: 50px;
         height: 50px;
         top: -15px;
-        left:-55px;
+        left: -55px;
         border-radius: 50%;
         background-image:url("https://dummyimage.com/300x300/fff/aaa");
         background-repeat: no-repeat;
         background-size: cover;
-    }
+    } */
 
     .fo-card-image {
         position: absolute;
         top:50%;
         left:50%;
         transform: translate(-50%, -50%);
-        width:200px;
-        height:200px;
-        background-image:url("https://dummyimage.com/300x300/fff/aaa");
+        width:130px;
+        height:130px;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius:50%;
@@ -107,13 +113,13 @@
 
     .fo-side-btn {
         position: absolute;
-        top:50%;
-        left:50%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
         border: 20px solid white;
         display: inline-block;
-        width:250px;
-        height:250px;
+        width:180px;
+        height:180px;
         border-radius: 50%;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -124,8 +130,8 @@
         content: '';
         display: block;
         position: absolute;
-        width:250px;
-        height:250px;
+        width: 180px;
+        height: 180px;
         left: -20px;
         top: -20px;
         transform: rotate(40deg);
@@ -139,7 +145,6 @@
     .fo-side-btn-active {
         border-top-color: red;
     }
-
     
     .fo-side-btn-2 {
         transform: translate(-50%, -50%) rotate(90deg);

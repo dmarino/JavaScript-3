@@ -11,7 +11,35 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             <div class="dialog">
                 <h3 class="title">Welcome to {{ name }}</h3>
             </div>
-            <ltFirstOfficerCard></ltFirstOfficerCard>
+            <div class="first-officer-cards">
+                <ltFirstOfficerCard
+                    title="Mines"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                    v-bind:numberOfItems="4"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Drones"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Silence"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+            </div>
+            <div class="first-officer-cards">
+                <ltFirstOfficerCard
+                    title="Torpedo"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Sonar"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Scenario"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+            </div>
         </div>
     </section>
 
@@ -45,10 +73,16 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         border: 1px solid black;
         background-color: lightgray;
         color: black;
-        height: 78vh;
+        height: 80vh;
         width: 80vw;
     }
-
+    .first-officer-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+    
     .title {
         text-shadow: 2px 2px #777;
     }
