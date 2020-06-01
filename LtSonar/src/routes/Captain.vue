@@ -4,24 +4,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="about-container">
+    <section class="captain-container">
         <div class="about">
             <h1 class="title">Captain</h1>
-            <div class="dialog">
-                <h3 class="title">Welcome to {{ name }}</h3>
-                <p>This {{ name }} is your Vue.js App</p><br/>
-                <p>
-               CAAAAAAPTAN
-                </p><br/>
-                <p>
-                There are a lot of moving parts to VUE, like other frameworks it provides the
-                structure, you provide components and content.  Scalability and generating
-                applications quickly is the goal.  A template like this one helps to quickstart
-                your app.
-                </p><br/>
-                <p>
-                This basic view is called a route edge or just a route.  This is the root edge.
-                </p><br/>
+            <div class="Left-Side">
+                <table class="captain-map">
+                    <tr v-for="(row, i) in mapData" :key="i">
+                        <td v-for="(col, j) in row" :key="j" class="col"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="Right-Side">
+
             </div>
         </div>
     </section>
@@ -35,8 +29,20 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                name: 'VFS Vue Template',
+                name: 'Captain Control Panel',
+                mapData: [
+                    "water", "water", "water", "island", "water", "water",
+                    "island", "island", "water", "water", "water", "water",
+                    "water", "water", "water", "island", "water", "water",
+                    "water", "water", "water", "water", "water", "water",
+                    "water", "water", "water", "water", "island", "water",
+                    "water", "water", "island", "water", "water", "water"
+                ],
+                row: [
+                    "A", "B", "C", "D", "E", "F"
+                ]
             }
+
         }
     }
 
@@ -45,9 +51,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </script>
 <style>
 /* Local styles for this template */
-    .about-container {
+    .captain-container {
         display: inline-block;
         width: 100%;
+        height: 100%;
     }
 
     .about {
@@ -61,5 +68,27 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     .title {
         text-shadow: 2px 2px #777;
+    }
+
+    .water {
+        background-color: blue;
+    }
+
+    .island {
+        background-color: green;
+    }
+
+    .cell {
+        width: 4em;
+        height: 4em;
+        border: 1em solid black;
+    }
+
+    .water_traveled {
+        background-color: darkblue;
+    }
+
+    .water_current_location {
+        background-color: cyan;
     }
 </style>
