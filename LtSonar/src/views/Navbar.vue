@@ -30,12 +30,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 navMenu:[
                     { section: "Root" },
+                    { section: "Navigator" },
+                    { section: "Captain" },
+                    { section: "Firstofficer" },
+                    { section: "Engineer" },
                     { section: "Home" },
                 ]
             };
         }
     }
-
     export default new NavbarController('pgNavbar');
 
 </script>
