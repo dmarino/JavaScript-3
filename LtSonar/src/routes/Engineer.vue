@@ -4,24 +4,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="about-container">
+    <section class="engineer-container">
         <div class="about">
-            <h1 class="title">Engineeer</h1>
-            <div class="dialog">
-                <h3 class="title">Welcome to {{ name }}</h3>
-                <p>This {{ name }} is your Vue.js App</p><br/>
-                <p>
-                Engineeer
-                </p><br/>
-                <p>
-                There are a lot of moving parts to VUE, like other frameworks it provides the
-                structure, you provide components and content.  Scalability and generating
-                applications quickly is the goal.  A template like this one helps to quickstart
-                your app.
-                </p><br/>
-                <p>
-                This basic view is called a route edge or just a route.  This is the root edge.
-                </p><br/>
+            <h1 class="title">Engineer</h1>
+            <div class="submarine-overview"></div>
+            <div class="engineer-areas">
+                <engineer-area title="W"></engineer-area>
+                <engineer-area title="N"></engineer-area>
+                <engineer-area title="S"></engineer-area>
+                <engineer-area title="E"></engineer-area>
             </div>
         </div>
     </section>
@@ -29,6 +20,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import engineerArea  from '@/components/EngineerArea.vue'
 
     class EngineerController extends Controller {
 
@@ -36,30 +28,34 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
                 name: 'VFS Vue Template',
+                
             }
         }
     }
 
-    export default new EngineerController('lsEngineer');
+    export default new EngineerController('lsEngineer', {engineerArea});
 
 </script>
 <style>
 /* Local styles for this template */
-    .about-container {
+
+    .engineer-container{
         display: inline-block;
+        width:100%;
+        height:100%;
+    }
+    .submarine-overview{
+        background-image:url("../assets/submarine-wireframe.png");
+        width:100%;
+        height:40%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .engineer-areas{
         width: 100%;
+        height: 60%;
     }
 
-    .about {
-        margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
-        color: black;
-        height: 78vh;
-        width: 80vw;
-    }
-
-    .title {
-        text-shadow: 2px 2px #777;
-    }
 </style>
