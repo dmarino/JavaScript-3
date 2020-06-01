@@ -7,38 +7,51 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 
     <section class="first-officer-container">
         <div class="first-officer">
-            <h1 class="title"></h1>
-            <div class="dialog">
-                <h3 class="title">Welcome to {{ name }}</h3>
+            <div class="top-container">
+                <div class="first-officer-submarine">
+                </div>
+                <div class="first-officer-damage">
+                    <div class="first-officer-damage-container first-officer-damaged"></div>
+                    <div class="first-officer-damage-container"></div>
+                    <div class="first-officer-damage-container"></div>
+                    <div class="first-officer-damage-container"></div>
+                </div>
             </div>
-            <div class="first-officer-cards">
-                <ltFirstOfficerCard
-                    title="Mines"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                    v-bind:numberOfItems="4"
-                ></ltFirstOfficerCard>
-                <ltFirstOfficerCard
-                    title="Drones"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                ></ltFirstOfficerCard>
-                <ltFirstOfficerCard
-                    title="Silence"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                ></ltFirstOfficerCard>
-            </div>
-            <div class="first-officer-cards">
-                <ltFirstOfficerCard
-                    title="Torpedo"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                ></ltFirstOfficerCard>
-                <ltFirstOfficerCard
-                    title="Sonar"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                ></ltFirstOfficerCard>
-                <ltFirstOfficerCard
-                    title="Scenario"
-                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
-                ></ltFirstOfficerCard>
+            <div>
+                <div class="first-officer-cards">
+                    <ltFirstOfficerCard
+                        title="Mines"
+                        imageUrl="mines.png"
+                        infoImageUrl="mines-info.png"
+                        v-bind:numberOfItems="3"
+                    ></ltFirstOfficerCard>
+                    <ltFirstOfficerCard
+                        title="Drones"
+                        imageUrl="drones.png"
+                        infoImageUrl="drones-info.png"
+                        v-bind:numberOfItems="4"
+                    ></ltFirstOfficerCard>
+                    <ltFirstOfficerCard
+                        title="Silence"
+                        imageUrl="silence.png"
+                        infoImageUrl="silence-info.png"
+                        v-bind:numberOfItems="6"
+                    ></ltFirstOfficerCard>
+                </div>
+                <div class="first-officer-cards">
+                    <ltFirstOfficerCard
+                        title="Torpedo"
+                        imageUrl="torpedo.png"
+                        infoImageUrl="torpedo-info.png"
+                        v-bind:numberOfItems="3"
+                    ></ltFirstOfficerCard>
+                    <ltFirstOfficerCard
+                        title="Sonar"
+                        imageUrl="sonar.png"
+                        infoImageUrl="sonar-info.png"
+                        v-bind:numberOfItems="3"
+                    ></ltFirstOfficerCard>
+                </div>
             </div>
         </div>
     </section>
@@ -53,7 +66,6 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                name: 'VFS Vue Template',
             }
         }
     }
@@ -63,12 +75,39 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 </script>
 <style>
 /* Local styles for this template */
+    .top-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-officer-damage {
+        display: flex;
+        align-items: center;
+    }
+
+    .first-officer-damage-container {
+        width: 100px;
+        height: 30px;
+        background-color: white;
+        border: 2px solid black;
+    }
+
+    .first-officer-damaged {
+        background-color: red;
+    }
+
     .first-officer-container {
-        display: inline-block;
         width: 100%;
     }
 
     .first-officer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         margin:2vw;
         border: 1px solid black;
         background-color: lightgray;
@@ -76,14 +115,18 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         height: 80vh;
         width: 80vw;
     }
+
+    .first-officer-submarine {
+        width:350px;
+        height: 100px;
+        background-image: url("../assets/submarine.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
     .first-officer-cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin-bottom: 5px;
-    }
-    
-    .title {
-        text-shadow: 2px 2px #777;
     }
 </style>

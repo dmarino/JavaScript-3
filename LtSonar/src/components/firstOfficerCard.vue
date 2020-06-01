@@ -12,9 +12,9 @@
             <h3 class="fo-card-title">{{title}}</h3>      
             <div class="fo-card-image" :style="FOImage"></div>
 
-            <div v-for="index in numberOfItems" :key="index" class="fo-side-btn fo-side-btn-1"></div>
+            <div v-for="index in numberOfItems" :key="index" :class="`fo-side-btn-${index}`" class="fo-side-btn"></div>
         </div>
-        <div class="fo-card-info">
+        <div class="fo-card-info" :style="FOInfoImage">
         </div>
     </div>
 
@@ -33,15 +33,22 @@
             this.props = { 
                 title: String,
                 imageUrl: String,
-                numberOfItems: Number
+                infoImageUrl: String,
+                numberOfItems: Number,
             }
 
             this.computed = {
                 FOImage() {
                         return {
-                            backgroundImage: `url(${this.imageUrl})`
+                            backgroundImage: `url(${require(`../assets/${this.imageUrl}`)})`
                         };
+                    },
+                FOInfoImage()
+                {
+                    return {
+                            backgroundImage: `url(${require(`../assets/${this.infoImageUrl}`)})`
                     }
+                }
             }
         }
 
@@ -53,10 +60,6 @@
 
 </script>
 <style scoped>
-    /*
-    Add "scoped" attribute to limit CSS to this component only <style scoped>
-    styles that are specific to this component only, not sub-children
-    */
     .fo-card-style {
         display: flex;
         flex-direction: column;
@@ -74,15 +77,16 @@
         padding: 20px;
         display: block;
         position:relative;
-        width: 250px;
-        height: 300px;
+        width: 100%;
+        height: 100%;
     }  
 
     .fo-card-title {
         position: relative;
-        top:  5px;
-        left: 50px;
+        top:  10px;
+        right: 125px;
         text-transform: uppercase;
+        text-align: right;
     }
 
     /* .fo-card-title::before {
@@ -167,10 +171,9 @@
         border: 2px solid black;
         border-radius: 5px;
         width: 100%;
-        height: 80px;
-        background-image:url("https://dummyimage.com/300x300/fff/aaa");
+        height: 130px;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
     }
 
 </style>
