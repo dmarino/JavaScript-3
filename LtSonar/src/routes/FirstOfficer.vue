@@ -1,27 +1,44 @@
 <!--
 VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 -->
 <template>
 
-    <section class="about-container">
-        <div class="about">
-            <h1 class="title">Captain</h1>
+    <section class="first-officer-container">
+        <div class="first-officer">
+            <h1 class="title"></h1>
             <div class="dialog">
                 <h3 class="title">Welcome to {{ name }}</h3>
-                <p>This {{ name }} is your Vue.js App</p><br/>
-                <p>
-                First OFFICCEERR
-                </p><br/>
-                <p>
-                There are a lot of moving parts to VUE, like other frameworks it provides the
-                structure, you provide components and content.  Scalability and generating
-                applications quickly is the goal.  A template like this one helps to quickstart
-                your app.
-                </p><br/>
-                <p>
-                This basic view is called a route edge or just a route.  This is the root edge.
-                </p><br/>
+            </div>
+            <div class="first-officer-cards">
+                <ltFirstOfficerCard
+                    title="Mines"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                    v-bind:numberOfItems="4"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Drones"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Silence"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+            </div>
+            <div class="first-officer-cards">
+                <ltFirstOfficerCard
+                    title="Torpedo"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Sonar"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
+                <ltFirstOfficerCard
+                    title="Scenario"
+                    imageUrl="https://dummyimage.com/300x300/fff/aaa"
+                ></ltFirstOfficerCard>
             </div>
         </div>
     </section>
@@ -29,6 +46,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import ltFirstOfficerCard from '@/components/firstOfficerCard'
 
     class FirstOfficerController extends Controller {
 
@@ -40,25 +58,31 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsFirstOfficer');
+    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard });
 
 </script>
 <style>
 /* Local styles for this template */
-    .about-container {
+    .first-officer-container {
         display: inline-block;
         width: 100%;
     }
 
-    .about {
+    .first-officer {
         margin:2vw;
         border: 1px solid black;
         background-color: lightgray;
         color: black;
-        height: 78vh;
+        height: 80vh;
         width: 80vw;
     }
-
+    .first-officer-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+    
     .title {
         text-shadow: 2px 2px #777;
     }
