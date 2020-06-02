@@ -7,8 +7,7 @@
     <section class="area-component">
         <div class="area-title">{{ title }}</div>
         <div class="area-grid">
-            <div  class="symbol" v-for="(item, index) in areaGrid" :key="index">
-                {{item.type}}
+            <div  class="symbol" :class=item.type v-for="(item, index) in areaGrid" :key="index">
             </div>
         </div>
     </section>
@@ -72,8 +71,27 @@
 
         display: inline-block;
         width: 30%;
-        height: 25%;
-        text-align: center;
+        height: 30%;
+        margin: 1%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .Y{
+        background-image:url("../assets/yellow.png");
+    }
+
+    .R{
+        background-image:url("../assets/missile.png");
+    }
+
+    .G{
+        background-image:url("../assets/radar.png");
+    }
+
+    .B{
+        background-image:url("../assets/reactor.png");
     }
 
 </style>
