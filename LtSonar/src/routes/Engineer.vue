@@ -5,7 +5,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="engineer-container">
-        <div class="about">
+        <div>
             <h1 class="title">Engineer</h1>
             <div class="submarine-overview"></div>
             <div class="engineer-areas">
@@ -36,8 +36,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     export default new EngineerController('lsEngineer', {engineerArea});
 
 </script>
-<style>
+<style scoped>
 /* Local styles for this template */
+
+    .engineer-container > div {
+        margin:2vw;
+        border: 1px solid black;
+        background-color: lightgray;
+        color: black;
+        height: 78vh;
+        width: 80vw;
+    }
 
     .engineer-container{
         display: inline-block;
