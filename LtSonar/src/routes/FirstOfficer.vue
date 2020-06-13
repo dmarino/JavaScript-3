@@ -6,6 +6,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 <template>
 
     <section class="first-officer-container">
+        <h1>{{playerName}}</h1>
         <div class="first-officer">
             <div class="top-container">
                 <div class="first-officer-submarine">
@@ -67,6 +68,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
             }
+            this.injectGetters(['playerName']);
         }
     }
 

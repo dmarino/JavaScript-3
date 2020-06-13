@@ -22,6 +22,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     <button value="Submit" class="">Submit</button>
                 </form>
 
+                <!-- <form @submit.prevent="login( nickname )">
+                    <input name="nick" v-model="nickname" placeholder="playerName">
+                </form> -->
             </div>
         </div>
     </section>
@@ -39,11 +42,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 formData: {
                     sampleOne:"",
                     sampleTwo:42,
-                }
+                },
+                nickname: ""
             }
             this.props = {
                 name: String,
             }
+            this.injectActions(['setName']);
+            this.injectGetters(['playerName']);
+        }
+
+        login (nickname) {
+            this.setName( nickname );
         }
     }
 
