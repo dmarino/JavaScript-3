@@ -8,7 +8,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         <div class="tittle-center">
 
             <div class="lt-logo"></div>
-            <button class="button"> <router-link to="Engineer">Join A Game</router-link></button>
+            <button class="button" @click="doIt( event )"></button>
 
             <div v-show= "showName" >asdasdas</div>
         </div>
@@ -46,7 +46,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         width: 100%;
 
         background-image:url("../assets/background.png");
-        background-size: 100% 100%;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }

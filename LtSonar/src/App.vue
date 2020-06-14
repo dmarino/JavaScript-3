@@ -65,9 +65,14 @@
     * { margin: 0; padding: 0; }
 
     body {
-        background-color: rgb(255, 255, 255);
         font-family: 'Maven Pro', Helvetica, sans-serif;
         overflow: hidden;
+
+        background: #265677	;
+        background: -webkit-linear-gradient( right, #265677, #10659c, #265677);
+        background: -o-linear-gradient(left , #265677, #10659c, #265677); 
+        background: -moz-linear-gradient(left ,#265677, #10659c, #265677); 
+        background: linear-gradient(to left , #265677, #10659c, #265677); 
     }
 
     label {
