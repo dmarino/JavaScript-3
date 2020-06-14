@@ -4,22 +4,23 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="tittle-screen">
+    <div class="tittle-screen">
+
         <div class="tittle-center">
 
             <div class="lt-logo"></div>
-            <button class="button" @click="doIt( event )"></button>
+            <button class="button" @click="openName()"> Join A Game</button>
 
-            <div v-show= "showName" >asdasdas</div>
         </div>
 
-        
-        
-    </section>
+        <nameComponent v-show= "showName" ></nameComponent>
+
+    </div>
 
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import nameComponent from '@/components/NameComponent.vue'
 
     class TittleController extends Controller {
 
@@ -28,18 +29,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 name: 'VFS Vue Template',
                 showName: false            }
+
         }
 
-        doIt( event ) {
+        openName( ) {
             this.showName=true;
         }
-
     }
 
-    export default new TittleController('pgTittle');
+    export default new TittleController('pgTittle',{nameComponent});
 
 </script>
-<style>
+<style scoped>
 /* Local styles for this template */
     .tittle-screen {
         height: 100%;
@@ -95,6 +96,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     .button:hover{
         cursor: pointer;
+        background: #ddd;
     }
 
 </style>

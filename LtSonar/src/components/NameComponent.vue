@@ -7,14 +7,17 @@
 -->
 <template>
 
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>{{ title }}</div>
-        <div>
-            <!-- Put your HTML template here-->
-            <slot></slot>
+    <div class="nameModalContainer"> 
+
+        <div class="nameModal">
+            <form @submit.prevent="login( nickname )">
+                <label>NICKNAME: </label>
+                <input name="nick" v-model="nickname" placeholder="playerName">
+                <button value="Submit"> OK</button>
+            </form>
         </div>
-        <button @click="doIt( event )">Do it!</button>
-    </section>
+
+    </div>
 
 </template>
 <script>
@@ -22,35 +25,53 @@
 
     // import other components you use here...
 
-    class ComponentController extends Controller {
+    class NameController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world"
+                someData: "Hello world",
+                nickname: ""
             }
-            this.props = { // props are passed in when using this component
-                title: String
-            }
+
+            this.injectActions(['setName']);
+            this.injectGetters(['playerName']);
         }
 
-        doIt( event ) {
-            // A method that does something to the props or viewModel, or global state
+        login (nickname) {
+            this.setName( nickname );
+            this.$router.push('/home')
         }
     }
 
-    export default new ComponentController('someTagName'/* , { subComponent, anotherComponent } */);
+    export default new NameController('pgNameComponent');
 
 </script>
-<style scoped>
-    /*
-    Add "scoped" attribute to limit CSS to this component only <style scoped>
-    styles that are specific to this component only, not sub-children
-    */
-    .component-style {
-        display: flex;
-        height: 20vh;
+<style>
+
+    .nameModalContainer{
         width: 100%;
+        height: 100%;
+
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
     }
+
+    .nameModal{
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        background: #10659c;
+        padding: 1% 2% 1% 2%;
+
+        border-radius: 25px;
+        border-style: solid;
+        border-color: #fff;
+    }
+
 
 </style>

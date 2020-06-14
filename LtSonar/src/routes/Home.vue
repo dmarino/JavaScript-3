@@ -9,23 +9,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="home-container">
         <div class="home">
-            <div>Welcome to your {{ name }}</div>
-            <div class="dialog">
+            <div>Welcome {{playerName}}</div>
+            <pgNavbar></pgNavbar>
 
-                <form class="sample-form">
-                    <label>Sample field
-                        <input name="s1" v-model="formData.sampleOne">
-                    </label><br/>
-                    <label>Number field:
-                        <input name="s2" v-model="formData.sampleTwo">
-                    </label><br/>
-                    <button value="Submit" class="">Submit</button>
-                </form>
-
-                <!-- <form @submit.prevent="login( nickname )">
-                    <input name="nick" v-model="nickname" placeholder="playerName">
-                </form> -->
-            </div>
         </div>
     </section>
 
@@ -33,6 +19,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
 
     import Controller from '@/../lib/controller'
+    import pgNavbar from '@/views/Navbar.vue'
 
     class HomeController extends Controller {
 
@@ -57,7 +44,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new HomeController('pgHome');
+    export default new HomeController('pgHome',{pgNavbar});
 
 </script>
 <style scoped>
