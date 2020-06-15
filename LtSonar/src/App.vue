@@ -4,21 +4,21 @@
 -->
 <template>
 
-    <main class="grid-frame vue-main-rootcomponent">
-        <pg-header></pg-header>
-        <pg-sidebar></pg-sidebar>
+    <main class="vue-main-rootcomponent">
+
+        <!--<pgTittle></pgTittle>-->
 
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
         <router-view></router-view>
 
         <div class="dialog-container">
-            <!-- dialogs instanciate within this container -->
         </div>
         <div class="loader">
             <svg viewBox="0 0 32 32" width="32" height="32">
                 <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
             </svg>
         </div>
+
     </main>
 
 </template>
@@ -29,6 +29,7 @@
     import pgHeader  from '@/views/Header.vue'
     import pgNavbar from '@/views/Navbar.vue'
     import pgSidebar from '@/views/Sidebar.vue'
+    import pgTittle from '@/routes/TittleScreen.vue'
 
     class AppController extends Controller {
 
@@ -46,7 +47,7 @@
     }
 
     // export a definition for this view
-    export default new AppController('pgApp', { pgHeader, pgSidebar, pgNavbar });
+    export default new AppController('pgApp', { pgHeader, pgSidebar, pgNavbar, pgTittle });
 
 </script>
 <style>
@@ -64,9 +65,14 @@
     * { margin: 0; padding: 0; }
 
     body {
-        background-color: rgb(194, 193, 193);
         font-family: 'Maven Pro', Helvetica, sans-serif;
         overflow: hidden;
+
+        background: #265677	;
+        background: -webkit-linear-gradient( right, #265677, #10659c, #265677);
+        background: -o-linear-gradient(left , #265677, #10659c, #265677); 
+        background: -moz-linear-gradient(left ,#265677, #10659c, #265677); 
+        background: linear-gradient(to left , #265677, #10659c, #265677); 
     }
 
     label {
@@ -108,6 +114,12 @@
         "sidecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent"
         "footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent" ;
         justify-items: start;
+    }
+
+    .vue-main-rootcomponent{
+
+        width: 100%;
+        height: 100%;
     }
 
     .grid-header {
