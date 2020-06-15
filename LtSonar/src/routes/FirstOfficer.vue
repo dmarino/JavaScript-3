@@ -12,31 +12,34 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                 <div class="first-officer-submarine">
                 </div>
                 <div class="first-officer-damage">
-                    <div class="first-officer-damage-container first-officer-damaged"></div>
+                    <div class="first-officer-damage-container"></div>
                     <div class="first-officer-damage-container"></div>
                     <div class="first-officer-damage-container"></div>
                     <div class="first-officer-damage-container"></div>
                 </div>
             </div>
             <div>
-                <div class="first-officer-cards">
+                <div class="first-officer-cards" >
                     <ltFirstOfficerCard
                         title="Mines"
                         imageUrl="mines.png"
                         infoImageUrl="mines-info.png"
                         v-bind:numberOfItems="3"
+                        @weaponReady="onMinesReady"
                     ></ltFirstOfficerCard>
                     <ltFirstOfficerCard
                         title="Drones"
                         imageUrl="drones.png"
                         infoImageUrl="drones-info.png"
                         v-bind:numberOfItems="4"
+                        @weaponReady="onDronesReady"
                     ></ltFirstOfficerCard>
                     <ltFirstOfficerCard
                         title="Silence"
                         imageUrl="silence.png"
                         infoImageUrl="silence-info.png"
-                        v-bind:numberOfItems="6"
+                        v-bind:numberOfItems="5"
+                        @weaponReady="onSilenceReady"
                     ></ltFirstOfficerCard>
                 </div>
                 <div class="first-officer-cards">
@@ -45,12 +48,14 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         imageUrl="torpedo.png"
                         infoImageUrl="torpedo-info.png"
                         v-bind:numberOfItems="3"
+                        @weaponReady="onTorpedoReady"
                     ></ltFirstOfficerCard>
                     <ltFirstOfficerCard
                         title="Sonar"
                         imageUrl="sonar.png"
                         infoImageUrl="sonar-info.png"
                         v-bind:numberOfItems="3"
+                        @weaponReady="onSonarReady"
                     ></ltFirstOfficerCard>
                 </div>
             </div>
@@ -68,10 +73,44 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
             }
-            this.injectGetters(['playerName']);
+
+            this.methods = {
+                onMinesReady (value) {
+                    this.setMinesStatus(value);
+                },
+                onDronesReady(value) {
+                    this.setDronesStatus(value);
+                },
+                onSilenceReady(value) {
+                    this.setSilenceStatus(value);
+                },
+                onTorpedoReady(value) {
+                    this.setTorpedoStatus(value);
+                },
+                onSonarReady(value) {
+                    this.setSonarStatus(value);
+                }
+            }
+
+            this.injectGetters([
+                'playerName', 
+                'minesStatus',
+                'dronesStatus',
+                'silenceStatus',
+                'torpedoStatus',
+                'sonarStatus'
+            ]);
+
+            this.injectActions(
+                ['setMinesStatus', 
+                'setDronesStatus', 
+                'setSilenceStatus', 
+                'setTorpedoStatus', 
+                'setSonarStatus']
+            );
         }
     }
-
+    
     export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard });
 
 </script>

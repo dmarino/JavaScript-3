@@ -8,11 +8,10 @@
 <template>
 
     <div class="fo-card-style">
-        <div class="fo-card-btns">  
+        <div class="fo-card-btns" v-on:click="activeWeapon">  
             <h3 class="fo-card-title">{{title}}</h3>      
             <div class="fo-card-image" :style="FOImage"></div>
-
-            <div v-for="index in numberOfItems" :key="index" :class="`fo-side-btn-${index}`" class="fo-side-btn"></div>
+            <div v-for="index in numberOfItems" :key="index" :class="`fo-side-btn-${index}`" class="fo-side-btn" ></div>
         </div>
         <div class="fo-card-info" :style="FOInfoImage">
         </div>
@@ -34,7 +33,7 @@
                 title: String,
                 imageUrl: String,
                 infoImageUrl: String,
-                numberOfItems: Number,
+                numberOfItems: Number
             }
 
             this.computed = {
@@ -45,19 +44,38 @@
                     },
                 FOInfoImage()
                 {
-                    return {
-                            backgroundImage: `url(${require(`../assets/${this.infoImageUrl}`)})`
+                return {
+                        backgroundImage: `url(${require(`../assets/${this.infoImageUrl}`)})`
+                    }
+                }
+            }
+
+            this.methods = {
+                activeWeapon(event) { 
+                    let card = event.currentTarget;
+                    let counter = 1;
+                    for (let i = 2; i < card.childNodes.length; i++) {
+                        if (!card.childNodes[i].classList.contains("fo-side-btn-active"))
+                        {
+                            card.childNodes[i].classList.add("fo-side-btn-active");
+                            break;
+                        }
+                        counter++;
+                    }
+                    
+                    if (counter >= this.$options.propsData.numberOfItems )
+                    {
+                        this.$emit('weaponReady', true)
+                    }
+                    else{
+                        this.$emit('weaponReady', false)
                     }
                 }
             }
         }
-
-        doIt( event ) {
-        }
     }
 
     export default new FirstOfficerCardController('ltFirstOfficerCard');
-
 </script>
 <style scoped>
     .fo-card-style {
@@ -88,20 +106,6 @@
         text-transform: uppercase;
         text-align: right;
     }
-
-    /* .fo-card-title::before {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 50px;
-        height: 50px;
-        top: -15px;
-        left: -55px;
-        border-radius: 50%;
-        background-image:url("https://dummyimage.com/300x300/fff/aaa");
-        background-repeat: no-repeat;
-        background-size: cover;
-    } */
 
     .fo-card-image {
         position: absolute;

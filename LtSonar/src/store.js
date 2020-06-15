@@ -9,18 +9,15 @@ Vue.use( Vuex )
 // Modules
 import ModelStore from '@/store/modelStore'
 import PlayerStore from '@/store/playerStore'
+import FirstOfficerStore from '@/store/firstOfficerStore'
 
 // Store with modules
 const store = new Vuex.Store({
     modules: {
         ModelStore,
-        PlayerStore
+        PlayerStore,
+        FirstOfficerStore
     }
 });
-
-//      OR
-
-// Store with local definitions
-//const store = new Vuex.Store({ state, mutations, actions, getters });
 
 export default store;
