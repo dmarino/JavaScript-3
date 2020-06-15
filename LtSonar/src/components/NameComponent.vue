@@ -11,7 +11,7 @@
 
         <div class="nameModal">
             <form @submit.prevent="login( nickname )">
-                <label>NICKNAME: </label>
+                <label class="nameLabel">nickname: </label>
                 <input name="nick" v-model="nickname" placeholder="playerName">
                 <button value="Submit"> OK</button>
             </form>
@@ -30,7 +30,6 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world",
                 nickname: ""
             }
 
@@ -39,8 +38,14 @@
         }
 
         login (nickname) {
-            this.setName( nickname );
-            this.$router.push('/home')
+
+            if(nickname!=""){
+                this.setName( nickname );
+                this.$router.push('/home')
+            }
+            else{
+                alert("the nickname can't be empty");
+            }
         }
     }
 
