@@ -7,14 +7,15 @@
     <section class="area-component">
         <div class="area-title">{{ title }}</div>
         <div class="area-grid">
-            <div  class="symbol" :class=item.type v-for="(item, index) in areaGrid" :key="index">
-            </div>
+            <lsAreaSymbol :type="item.type" v-for="(item, index) in areaGrid" :key="index">
+            </lsAreaSymbol>
         </div>
     </section>
 
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import lsAreaSymbol from '@/components/EngineerAreaSymbol.vue'
 
     // import other components you use here...
 
@@ -36,13 +37,15 @@
                 ]
             }
             this.props = { // props are passed in when using this component
-                title: String
+                title: String,
+                area: Array
+                
             }
         }
 
     }
 
-    export default new AreaController('engineerArea');
+    export default new AreaController('engineerArea',{lsAreaSymbol});
 
 </script>
 <style scoped>
