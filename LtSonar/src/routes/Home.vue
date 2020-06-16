@@ -8,8 +8,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="home-container">
+        <h1>Welcome {{player.name}}</h1>
         <div class="home">
-            <div>Welcome {{playerName}}</div>
             <pgNavbar></pgNavbar>
 
         </div>
@@ -36,7 +36,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 name: String,
             }
             this.injectActions(['setName']);
-            this.injectGetters(['playerName']);
+            this.injectGetters(['player']);
         }
 
         login (nickname) {

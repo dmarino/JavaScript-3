@@ -22,6 +22,6 @@ export default {
     },
 
     getters: {
-        playerName: state => state.player.name,
+        player: state => state.player,
     },
 }

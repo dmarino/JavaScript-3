@@ -5,8 +5,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="navigator-container">
+        <h1>Player Name: {{player.name}}</h1>
         <div class="about">
-            <h1 class="title">Navigator</h1>
+            <h2 class="title">Navigator</h2>
             <div class="Left-Side">
                 <table class="navigator-map">
                     <tr v-for="(row, i) in mapData" :key="i" class="row">
@@ -49,13 +50,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     "A", "B", "C", "D", "E", "F", "G", "H", "I", "K"
                 ]
             }
-
+            
+            this.injectGetters(['player']);
         }
-        /*changeTile(){
-            if(){
-
-            }
-        }*/
     }
 
     export default new NavigatorController('lsNavigator');

@@ -3,10 +3,10 @@ VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
-
     <section class="engineer-container">
+        <h1>Player Name: {{player.name}}</h1>
         <div>
-            <h1 class="title">Engineer</h1>
+            <h2 class="title">Engineer</h2>
             <div class="submarine-overview"></div>
             <div class="engineer-areas">
                 <engineer-area title="W"></engineer-area>
@@ -28,8 +28,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
                 name: 'VFS Vue Template',
-                
             }
+            this.injectGetters(['player'])
         }
     }
 
