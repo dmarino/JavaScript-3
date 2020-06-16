@@ -4,24 +4,14 @@
 -->
 <template>
 
-    <section class="captain-container">
-        <div class="about">
-            <h1 class="title">Captain</h1>
-            <div class="Left-Side">
-                <table class="captain-map">
-                    <tr v-for="(row, i) in mapData" :key="i" class="row">
-                        <td v-for="(col, j) in row" :key="j" v-bind:class="col"></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="Right-Side">
-                <form class="make-notes">
-                </form>
-                <div class="hold-notes">
-                </div>
-            </div>
-        </div>
-    </section>
+
+    <div class="Left-Side">
+        <table class="map">
+            <tr v-for="(row, i) in mapData" :key="i" class="row">
+                <td v-for="(col, j) in row" :key="j" v-bind:class="col"></td>
+            </tr>
+        </table>
+    </div>
 
 </template>
 <script>
@@ -29,12 +19,12 @@
 
     // import other components you use here...
 
-    class CaptainCard extends Controller {
+    class MapCard extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                name: 'Captain Control Panel',
+                name: 'Control Panel',
                 isStarted: false,
                 mapData: [
                     ["water", "water", "water", "island", "water", "water","water", "water", "water", "island"],
@@ -57,7 +47,7 @@
 
     }
 
-    export default new CaptainCard('grid_and_form'/* , { subComponent, anotherComponent } */);
+    export default new MapCard('gridAndForm'/* , { subComponent, anotherComponent } */);
 
 </script>
 <style scoped>
@@ -65,7 +55,7 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .captain-container {
+    .Left-Side {
         width: 100%;
         height: 100%;
     }

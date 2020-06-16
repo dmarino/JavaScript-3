@@ -7,14 +7,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     <section class="navigator-container">
         <h1>Player Name: {{player.name}}</h1>
         <div class="about">
-            <h2 class="title">Navigator</h2>
-            <div class="Left-Side">
-                <table class="navigator-map">
-                    <tr v-for="(row, i) in mapData" :key="i" class="row">
-                        <td v-for="(col, j) in row" :key="j" v-bind:class="col"></td>
-                    </tr>
-                </table>
-            </div>
+            <h1 class="title">Navigator</h1>
+            <gridAndForm>
+            </gridAndForm>
             <div class="Right-Side">
                 <form class="make-notes">
                 </form>
@@ -27,35 +22,22 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
     import Controller from '@/../lib/controller'
-
+    import gridAndForm from '@/components/MapCard.vue'
+    
     class NavigatorController extends Controller {
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
                 name: 'Navigator Control Panel',
                 isStarted: false,
-                mapData: [
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "island"],
-                    ["island", "island", "water", "water", "water", "island","island", "water", "water", "island"],
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "water", "island", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["island", "water", "water", "water", "island", "water","water", "water", "water", "island"],
-                    ["water", "water", "water", "water", "island", "water","water", "water", "water", "water"],
-                    ["water", "water", "island", "water", "water", "water","island", "island", "water", "water"]
-                ],
-                row: [
-                    "A", "B", "C", "D", "E", "F", "G", "H", "I", "K"
-                ]
             }
             
             this.injectGetters(['player']);
         }
     }
 
-    export default new NavigatorController('lsNavigator');
+    export default new NavigatorController('lsNavigator', {gridAndForm});
+    
 
 </script>
 <style>

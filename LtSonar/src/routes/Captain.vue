@@ -7,26 +7,19 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     <section class="captain-container">
         <h1>Player Name: {{player.name}}</h1>
         <div class="about">
-            <h2 class="title">Captain</h2>
-            <div class="Left-Side">
-                <table class="captain-map">
-                    <tr v-for="(row, i) in mapData" :key="i" class="row">
-                        <td v-for="(col, j) in row" :key="j" v-bind:class="col"></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="Right-Side">
-                <form class="make-notes">
-                </form>
-                <div class="hold-notes">
-                </div>
-            </div>
+            <h1 class="title">Captain</h1>
+            <gridAndForm>
+            </gridAndForm>
+            <keepRecord role="Captain">
+            </keepRecord>
         </div>
     </section>
 
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import gridAndForm from '@/components/MapCard'
+    import keepRecord from '@/components/RecordCard'
 
     class CaptainController extends Controller {
 
@@ -35,28 +28,13 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 name: 'Captain Control Panel',
                 isStarted: false,
-                mapData: [
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "island"],
-                    ["island", "island", "water", "water", "water", "island","island", "water", "water", "island"],
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "water", "island", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["island", "water", "water", "water", "island", "water","water", "water", "water", "island"],
-                    ["water", "water", "water", "water", "island", "water","water", "water", "water", "water"],
-                    ["water", "water", "island", "water", "water", "water","island", "island", "water", "water"]
-                ],
-                row: [
-                    "A", "B", "C", "D", "E", "F", "G", "H", "I", "K"
-                ]
             }
         
         this.injectGetters(['player']);
         }
     }
 
-    export default new CaptainController('lsCaptain');
+    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord});
 
 </script>
 <style>

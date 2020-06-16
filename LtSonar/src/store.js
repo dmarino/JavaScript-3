@@ -10,13 +10,15 @@ Vue.use( Vuex )
 import ModelStore from '@/store/modelStore'
 import PlayerStore from '@/store/playerStore'
 import FirstOfficerStore from '@/store/firstOfficerStore'
+import RecordStore from '@/store/RecordStore'
 
 // Store with modules
 const store = new Vuex.Store({
     modules: {
         ModelStore,
         PlayerStore,
-        FirstOfficerStore
+        FirstOfficerStore,
+        RecordStore
     }
 });
 
