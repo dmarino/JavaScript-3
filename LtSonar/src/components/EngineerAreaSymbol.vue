@@ -32,8 +32,6 @@
             this.methods = {
                 select() { 
 
-                    this.isCompromised=true;
-
                     var symbol={}
                     symbol.areaPos = this.areaPos
                     symbol.pos = this.component.pos
