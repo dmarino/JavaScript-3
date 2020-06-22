@@ -49,7 +49,7 @@
     .team-choosing {
         display: inline-block;
         height: 100%;
-        width: 45%;
+        width: 40%;
         text-align: center;
     }
 

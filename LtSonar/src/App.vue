@@ -11,13 +11,13 @@
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
         <router-view></router-view>
 
-        <div class="dialog-container">
+        <!-- <div class="dialog-container">
         </div>
         <div class="loader">
             <svg viewBox="0 0 32 32" width="32" height="32">
                 <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
             </svg>
-        </div>
+        </div> -->
 
     </main>
 
@@ -67,7 +67,6 @@
     body {
         font-family: 'Maven Pro', Helvetica, sans-serif;
         overflow: hidden;
-
         background: #265677	;
         background: -webkit-linear-gradient( right, #265677, #10659c, #265677);
         background: -o-linear-gradient(left , #265677, #10659c, #265677); 
@@ -338,7 +337,7 @@
     }
 
     h2 {
-        color: white;
+    
         font-family: 'Roboto', Helvetica, sans-serif;
         margin: 3px 0px 3px 0px;
     }
@@ -357,7 +356,22 @@
 
     /* Vue components Styles */
     .vue-main-rootcomponent{
-        /* border: 2px solid black; */
+
+    }
+
+    .inside-container {
+        background-image:url("assets/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 20px;
+    }
+
+    .player-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .vue-component{

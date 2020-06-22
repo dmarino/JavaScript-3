@@ -3,9 +3,13 @@ VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
-    <section class="engineer-container">
-        <h1>Player Name: {{player.name}}</h1>
-        <div>
+    <section class="engineer-container player-container inside-container">
+        <playerInfo
+            name="Jonathan"
+            team="A"
+            role="Officer"
+        />
+        <div class="engineer-inside-container"> 
             <h2 class="title">Engineer</h2>
             <div class="submarine-overview"></div>
             <div class="engineer-areas">
@@ -18,6 +22,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import engineerArea  from '@/components/EngineerArea.vue'
+    import playerInfo from '@/components/PlayerInfo.vue'
 
     class EngineerController extends Controller {
 
@@ -31,13 +36,13 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new EngineerController('lsEngineer', {engineerArea});
+    export default new EngineerController('lsEngineer', {engineerArea, playerInfo});
 
 </script>
 <style scoped>
 /* Local styles for this template */
-
-    .engineer-container > div {
+    
+    .engineer-inside-container {
         margin:2vw;
         border: 1px solid black;
         background-color: lightgray;
@@ -47,10 +52,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     }
 
     .engineer-container{
-        display: inline-block;
         width:100%;
         height:100%;
     }
+    
     .submarine-overview{
         background-image:url("../assets/submarine-wireframe.png");
         width:100%;

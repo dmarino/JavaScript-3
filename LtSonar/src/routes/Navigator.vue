@@ -4,8 +4,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="navigator-container">
-        <h1>Player Name: {{player.name}}</h1>
+    <section class="navigator-container player-container inside-container">
+        <playerInfo
+            name="Jonathan"
+            team="A"
+            role="Officer"
+        />
         <div class="about">
             <h1 class="title">Navigator</h1>
             <gridAndForm>
@@ -23,7 +27,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import gridAndForm from '@/components/MapCard.vue'
-    
+    import playerInfo from '@/components/PlayerInfo.vue'
+
     class NavigatorController extends Controller {
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
@@ -36,7 +41,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new NavigatorController('lsNavigator', {gridAndForm});
+    export default new NavigatorController('lsNavigator', {gridAndForm, playerInfo});
     
 
 </script>

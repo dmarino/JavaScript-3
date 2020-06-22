@@ -15,6 +15,7 @@
         </div>
         <div class="fo-card-info" :style="FOInfoImage">
         </div>
+        <button v-if="isActive">Click</button>
     </div>
 
 </template>
@@ -22,11 +23,10 @@
     import Controller from '@/../lib/controller'
 
     class FirstOfficerCardController extends Controller {
-
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Card"
+                isActive: false,
             }
 
             this.props = { 
@@ -36,46 +36,49 @@
                 numberOfItems: Number
             }
 
-            this.computed = {
-                FOImage() {
-                        return {
-                            backgroundImage: `url(${require(`../assets/${this.imageUrl}`)})`
-                        };
-                    },
-                FOInfoImage()
-                {
-                return {
-                        backgroundImage: `url(${require(`../assets/${this.infoImageUrl}`)})`
-                    }
-                }
-            }
+            this.create = {
 
-            this.methods = {
-                activeWeapon(event) { 
-                    let card = event.currentTarget;
-                    let counter = 1;
-                    for (let i = 2; i < card.childNodes.length; i++) {
-                        if (!card.childNodes[i].classList.contains("fo-side-btn-active"))
-                        {
-                            card.childNodes[i].classList.add("fo-side-btn-active");
-                            break;
-                        }
-                        counter++;
-                    }
-                    
-                    if (counter >= this.$options.propsData.numberOfItems )
-                    {
-                        this.$emit('weaponReady', true)
-                    }
-                    else{
-                        this.$emit('weaponReady', false)
-                    }
+            }
+        }
+
+        on_FOImage() {
+            return {
+                backgroundImage: `url(${require(`../assets/${this.imageUrl}`)})`
+            };
+        }
+
+        on_FOInfoImage() {
+        return {
+                backgroundImage: `url(${require(`../assets/${this.infoImageUrl}`)})`
+            }
+        }
+
+        activeWeapon(event) { 
+            let card = event.currentTarget;
+            let counter = 1;
+            for (let i = 2; i < card.childNodes.length; i++) {
+                if (!card.childNodes[i].classList.contains("fo-side-btn-active"))
+                {
+                    card.childNodes[i].classList.add("fo-side-btn-active");
+                    break;
                 }
+                counter++;
+            }
+            
+            if (counter >= this.$options.propsData.numberOfItems )
+            {
+                this.isActive = true
+                this.$emit('weaponReady', true)
+                
+            }
+            else {
+                this.$emit('weaponReady', false)
             }
         }
     }
 
     export default new FirstOfficerCardController('ltFirstOfficerCard');
+
 </script>
 <style scoped>
     .fo-card-style {

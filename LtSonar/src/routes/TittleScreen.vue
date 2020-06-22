@@ -4,13 +4,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <div class="tittle-screen">
+    <div class="tittle-screen inside-container">
 
         <div class="tittle-center">
 
             <div class="lt-logo"></div>
             <button class="button" @click="openName()"> Join A Game</button>
-
         </div>
 
         <nameComponent v-show= "showName" ></nameComponent>
@@ -45,11 +44,6 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     .tittle-screen {
         height: 100%;
         width: 100%;
-
-        background-image:url("../assets/background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
     }
 
     .tittle-center {
@@ -76,6 +70,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         background-repeat: no-repeat;
         background-position: center;
     }
+
     .button{
 
         display: inline-block;
