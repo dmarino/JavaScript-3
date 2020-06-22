@@ -11,9 +11,8 @@
 
         <div class="nameModal">
             <form @submit.prevent="login( nickname )">
-                <label class="nameLabel">nickname: </label>
-                <input name="nick" v-model="nickname" placeholder="playerName">
-                <button value="Submit"> OK</button>
+                <input  id="name_input" type="text" name="nick" v-model="nickname" placeholder="playerName">
+                <button id="name_btn" value="Submit"> OK</button>
             </form>
         </div>
 
@@ -39,9 +38,9 @@
 
         login (nickname) {
 
-            if(nickname!=""){
+            if(nickname!="" || nickname!= " "){
                 this.setName( nickname );
-                this.$router.push('/home')
+                this.$router.push('/selection')
             }
             else{
                 alert("the nickname can't be empty");
@@ -71,11 +70,53 @@
         transform: translate(-50%, -50%);
 
         background: #10659c;
-        padding: 1% 2% 1% 2%;
+        padding-left: 2%;
 
+        border: 1px solid #aaa;
         border-radius: 25px;
-        border-style: solid;
-        border-color: #fff;
+    }
+
+    #name_input{
+        
+        background: #10659c;
+        width: 70%;
+        margin-top: 1%;
+        margin-left: 1%;
+        font-size: 1.5vw;
+
+        color: #fff;
+
+        border: none !important;
+
+    }
+
+    #name_input:hover{
+        outline: none;
+        border: none !important;
+    }
+
+    #name_input::placeholder {
+        color:#fff;
+        opacity: 0.7; 
+    }
+
+    #name_btn{
+        background-color: #0288D1;
+        width: 20%;
+        height: 100%;
+        font-size: 1.5vw;
+        border: none;
+        color: white; 
+        float: right;
+
+        padding-right: 2%;
+
+        -webkit-border-top-right-radius:25px;
+        -webkit-border-bottom-right-radius:25px;
+        -moz-border-radius-topright:25px;
+        -moz-border-radius-bottomright:25px;
+        border-top-right-radius:25px;
+        border-bottom-right-radius:25px;
     }
 
 
