@@ -9,10 +9,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <h2 class="title">Engineer</h2>
             <div class="submarine-overview"></div>
             <div class="engineer-areas">
-                <engineer-area title="W"></engineer-area>
-                <engineer-area title="N"></engineer-area>
-                <engineer-area title="S"></engineer-area>
-                <engineer-area title="E"></engineer-area>
+                <engineer-area  v-for="(item, index) in engineer.areas" :key="index" :area="item"></engineer-area>
             </div>
         </div>
     </section>
@@ -30,6 +27,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 name: 'VFS Vue Template',
             }
             this.injectGetters(['player'])
+            this.injectGetters(['engineer'])
         }
     }
 

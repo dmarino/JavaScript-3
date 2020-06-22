@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <div class="symbol" :class="type" v-on:click="select"><!-- Just one main element per template -->
-        <div></div>
+    <div class="symbol" :class="component.type" v-on:click="select"><!-- Just one main element per template -->
+        <div class="x" v-show="component.comprommised"></div>
     </div>
 
 </template>
@@ -25,20 +25,27 @@
                 isCompromised: false
             }
             this.props = { // props are passed in when using this component
-                type: String
+                component: Object,
+                areaPos: Number
             }
+            
+            this.methods = {
+                select() { 
 
-             this.methods = {
-                select(event) { 
-
-                    event.currentTarget.childNodes[0].classList.add("x");
                     this.isCompromised=true;
+
+                    var symbol={}
+                    symbol.areaPos = this.areaPos
+                    symbol.pos = this.component.pos
+                    this.setSymbolStatus(symbol)
                 }
             }
+
+            this.injectActions(['setSymbolStatus']);            
         }
     }
 
-    export default new ComponentController('lsAreaSymbol'/* , { subComponent, anotherComponent } */);
+    export default new ComponentController('lsAreaSymbol');
 
 </script>
 <style scoped>

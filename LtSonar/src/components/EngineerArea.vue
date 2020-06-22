@@ -5,9 +5,9 @@
 <template>
 
     <section class="area-component">
-        <div class="area-title">{{ title }}</div>
+        <div class="area-title">{{ area.name }}</div>
         <div class="area-grid">
-            <lsAreaSymbol :type="item.type" v-for="(item, index) in areaGrid" :key="index">
+            <lsAreaSymbol :component="item" v-for="(item, index) in area.areaGrid" :key="index" :areaPos="area.pos">
             </lsAreaSymbol>
         </div>
     </section>
@@ -24,22 +24,10 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                areaGrid:[
-                    { type: "Y" },
-                    { type: " " },
-                    { type: " " },
-                    { type: "R" },
-                    { type: " " },
-                    { type: "Y" },
-                    { type: "G" },
-                    { type: "R" },
-                    { type: "B" },
-                ]
+
             }
             this.props = { // props are passed in when using this component
-                title: String,
-                area: Array
-                
+                area: Object
             }
         }
 
