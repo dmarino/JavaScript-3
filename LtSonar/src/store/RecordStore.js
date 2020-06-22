@@ -27,14 +27,14 @@ export default {
 
     // PRIVATE: caled by actions to modify the state to prevent deadlock
     mutations: {
-        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.AddLocation},
-        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.AddLocation}
+        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.AddLocation(newPosition)},
+        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.AddLocation(newPosition)}
     },
 
     // PUBLIC: injected into components
     // called to retrieve state data from the store
     getters: {
-        Get_Captain: state => state.captain.History,
-        Get_Navigator: state => state.navigator.History
+        getCaptain: state =>{ return state.captain.History},
+        getNavigator: state => {return state.navigator.History}
     },
 }

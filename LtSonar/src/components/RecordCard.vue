@@ -13,6 +13,7 @@
             <input type="button" id="buttonSouth" value="South" @click="addtoCAParray(inputArray[1])">
             <input type="button" id="buttonWest" value="West" @click="addtoCAParray(inputArray[3])">
             <div id="ListOfMovements"> 
+                {{getCaptain}}
             </div>
         </form>
         <form v-if="role == 'Navigator'">
@@ -22,6 +23,7 @@
             <input type="button" id="buttonSouth" value="South" @click="addtoNAVarray(inputArray[1])">
             <input type="button" id="buttonWest" value="West" @click="addtoNAVarray(inputArray[3])">
             <div id="ListOfMovements">
+                {{getNavigator}}
             </div>
         </form>
     </div>
@@ -44,7 +46,7 @@
             }
             this.props={role: String }
             this.injectActions(mapActions(['CaptainHistory', 'NavigatorHistory']));
-            this.injectGetters(mapGetters(['Get_Captain', 'Get_Navigator']));
+            this.injectGetters(mapGetters(['getCaptain', 'getNavigator']));
         }
 
         addtoCAParray(buttonReturn)
