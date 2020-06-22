@@ -25,7 +25,7 @@
 <script>
     // typical Vue component controller defined and registered here
     import Controller from '@/../lib/controller'
-
+    import Store from '@/store.js'
     import pgHeader  from '@/views/Header.vue'
     import pgNavbar from '@/views/Navbar.vue'
     import pgSidebar from '@/views/Sidebar.vue'
