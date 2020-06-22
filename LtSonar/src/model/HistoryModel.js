@@ -4,9 +4,10 @@
 
 export default class HistoryModel {
 
-    constructor (  ) {
-        this.History = [];
+    constructor ( History = [] ) {
+        this.History = History;
         this.currentCounter = 0;
+
     }
     
     AddLocation(updateLocations)
