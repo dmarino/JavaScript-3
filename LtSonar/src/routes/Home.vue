@@ -6,8 +6,7 @@ VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
-
-    <section class="home-container">
+    <section class="home-container inside-container">
         <h1>Welcome {{player.name}}</h1>
         <div class="home">
             <pgNavbar></pgNavbar>

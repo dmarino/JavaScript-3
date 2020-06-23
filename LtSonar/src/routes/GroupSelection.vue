@@ -4,7 +4,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <div class="group-selection">
+    <div class="group-selection inside-container">
         <h1>{{player.name}}</h1>
         <h2 class="instructions"> Choose your team and your role</h2>
         <teamComponent title="Team A"></teamComponent>
@@ -35,16 +35,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     export default new GroupController('pgGroup',{teamComponent});
 
 </script>
-<style scoped>
+<style>
 /* Local styles for this template */
     .group-selection {
         height: 100%;
         width: 100%;
-
-        background-image:url("../assets/background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
 
         text-align: center;
     }

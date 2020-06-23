@@ -5,8 +5,12 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 -->
 <template>
 
-    <section class="first-officer-container">
-        <h1>Player Name: {{player.name}}</h1>
+    <section class="base-container player-container inside-container">
+        <playerInfo
+            name="Jonathan"
+            team="A"
+            role="Officer"
+        />
         <div class="first-officer">
             <div class="top-container">
                 <div class="first-officer-submarine">
@@ -66,7 +70,8 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import ltFirstOfficerCard from '@/components/firstOfficerCard'
-
+    import playerInfo from '@/components/PlayerInfo.vue'
+    
     class FirstOfficerController extends Controller {
 
         constructor( name, subComponentList = []) {
@@ -111,7 +116,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         }
     }
     
-    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard });
+    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo });
 
 </script>
 <style>

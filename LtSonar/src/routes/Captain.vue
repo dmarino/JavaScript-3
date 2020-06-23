@@ -4,8 +4,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="captain-container">
-        <h1>Player Name: {{player.name}}</h1>
+    <section class="captain-container player-container inside-container">
+        <playerInfo
+            name="Jonathan"
+            team="A"
+            role="Officer"
+        />
         <div class="about">
             <h1 class="title">Captain</h1>
             <gridAndForm>
@@ -20,6 +24,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import Controller from '@/../lib/controller'
     import gridAndForm from '@/components/MapCard'
     import keepRecord from '@/components/RecordCard'
+    import playerInfo from '@/components/PlayerInfo.vue'
 
     class CaptainController extends Controller {
 
@@ -34,7 +39,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord});
+    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord, playerInfo});
 
 </script>
 <style>
