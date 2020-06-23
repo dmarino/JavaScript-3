@@ -5,8 +5,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
     <section class="engineer-container">
         <h1>Player Name: {{player.name}}</h1>
-        <div>
-            <h2 class="title">Engineer</h2>
+        <h2 class="title">Engineer</h2>
+        <div>          
             <div class="submarine-overview"></div>
             <div class="engineer-areas">
                 <engineer-area  v-for="(item, index) in engineer.areas" :key="index" :area="item"></engineer-area>
@@ -38,18 +38,21 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 /* Local styles for this template */
 
     .engineer-container > div {
-        margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
+        margin:2%;
         color: black;
-        height: 78vh;
-        width: 80vw;
+        height: 78%;
+        width: 96%;
     }
 
     .engineer-container{
         display: inline-block;
         width:100%;
         height:100%;
+
+        background-image:url("../assets/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     .submarine-overview{
         background-image:url("../assets/submarine-wireframe.png");
@@ -63,6 +66,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     .engineer-areas{
         width: 100%;
         height: 60%;
+
     }
 
 </style>

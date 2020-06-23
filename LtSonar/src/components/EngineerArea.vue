@@ -5,7 +5,7 @@
 <template>
 
     <section class="area-component">
-        <div class="area-title">{{ area.name }}</div>
+        <h1 class="area-title">{{ area.name }}</h1>
         <div class="area-grid">
             <lsAreaSymbol :component="item" v-for="(item, index) in area.areaGrid" :key="index" :areaPos="area.pos">
             </lsAreaSymbol>
@@ -50,12 +50,16 @@
 
     .area-title{
         text-align: center;
+        color: white;
     }
 
     .area-grid{
         border-style: solid;
+        border-color: white;
         height: 70%;
         width: 100%;
+
+        background: rgba(255, 255, 255, 0.2);
     }
 
     .symbol{

@@ -4,7 +4,6 @@
 export default class Engineer {
 
     constructor () {
-
         this.areas = [
             {
                 name:"W",
@@ -134,7 +133,7 @@ export default class Engineer {
                         type: "B", comprommised: false, pos:6 
                     },
                     { 
-                        type: "G", comprommised: true, pos:7
+                        type: "G", comprommised: false, pos:7
                     },
                     { 
                         type: "B", comprommised: false, pos:8
@@ -144,5 +143,10 @@ export default class Engineer {
             },
 
         ]
+ 
+        this.circuits =[{
+            
+            
+        }]
     }
 }
