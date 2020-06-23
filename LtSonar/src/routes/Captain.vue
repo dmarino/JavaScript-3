@@ -12,7 +12,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         />
         <div class="about">
             <h1 class="title">Captain</h1>
-            <gridAndForm>
+            <gridAndForm role="Captain">
             </gridAndForm>
             <keepRecord role="Captain">
             </keepRecord>

@@ -6,9 +6,14 @@
 
 
     <div class="Left-Side">
-        <table class="map">
-            <tr v-for="(row, i) in mapData" :key="i" class="row">
-                <td v-for="(col, j) in row" :key="j" v-bind:class="col"></td>
+        <table class="map" v-if="role == 'Captain'">
+            <tr v-for="(row, i) in this.getCaptain.mapData" :key="i" class="row">
+                <td @click="doClick($event, i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" ></td>
+            </tr>
+        </table>
+        <table class="map" v-if="role == 'Navigator'">
+            <tr v-for="(row, i) in this.getNavigator.mapData" :key="i" class="row">
+                <td @click="doClick($event, i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" ></td>
             </tr>
         </table>
     </div>
@@ -26,28 +31,48 @@
             this.vm = {
                 name: 'Control Panel',
                 isStarted: false,
-                mapData: [
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "island"],
-                    ["island", "island", "water", "water", "water", "island","island", "water", "water", "island"],
-                    ["water", "water", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "water", "island", "water","water", "island", "water", "water"],
-                    ["water", "island", "water", "island", "water", "water","water", "water", "water", "water"],
-                    ["water", "water", "water", "water", "water", "water","water", "island", "water", "water"],
-                    ["island", "water", "water", "water", "island", "water","water", "water", "water", "island"],
-                    ["water", "water", "water", "water", "island", "water","water", "water", "water", "water"],
-                    ["water", "water", "island", "water", "water", "water","island", "island", "water", "water"]
-                ],
+                isFirstPosition: false,
                 row: [
                     "A", "B", "C", "D", "E", "F", "G", "H", "I", "K"
                 ]
             }
 
+            this.props = {
+                role: String
+            }
+            this.injectActions(['CaptainPosition', 'NavigatorPosition']);
+            this.injectGetters(['getCaptain', 'getNavigator']);
+
+        }
+
+        doClick(event, i, j)
+        {
+            if( this.isFirstPosition == false)
+            {
+                if(this.role == "Captain")
+                {
+                    console.log("ship")
+                    let newPosition = {x:i,y:j}
+                    this.CaptainPosition(newPosition)
+                }
+                else if (this.role == "Navigator")
+                {
+                    let newPosition = {x:i,y:j}
+                    this.NavigatorPosition(newPosition)
+                }
+                this.isFirstPosition = true;
+            }
+            else
+            {
+                console.log("x " + this.getCaptain.currentPosition.x)
+                console.log("y " + this.getCaptain.currentPosition.y)
+            }
+            
         }
 
     }
 
-    export default new MapCard('gridAndForm'/* , { subComponent, anotherComponent } */);
+    export default new MapCard('gridAndForm' /* , { subComponent, anotherComponent } */ );
 
 </script>
 <style scoped>
@@ -77,6 +102,13 @@
 
     .water {
         background-color: blue;
+        width: 4em;
+        height: 4em;
+        border: 0.25em solid black;
+    }
+
+    .water-ship{
+        background-color: red;
         width: 4em;
         height: 4em;
         border: 0.25em solid black;

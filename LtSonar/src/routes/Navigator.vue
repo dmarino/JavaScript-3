@@ -12,14 +12,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         />
         <div class="about">
             <h1 class="title">Navigator</h1>
-            <gridAndForm>
+            <gridAndForm role="Navigator">
             </gridAndForm>
-            <div class="Right-Side">
-                <form class="make-notes">
-                </form>
-                <div class="hold-notes">
-                </div>
-            </div>
+            <keepRecord role="Navigator">
+            </keepRecord>
         </div>
     </section>
 
@@ -27,6 +23,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import gridAndForm from '@/components/MapCard.vue'
+    import keepRecord from '@/components/RecordCard'
     import playerInfo from '@/components/PlayerInfo.vue'
 
     class NavigatorController extends Controller {
@@ -41,7 +38,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new NavigatorController('lsNavigator', {gridAndForm, playerInfo});
+    export default new NavigatorController('lsNavigator', {gridAndForm, keepRecord, playerInfo});
     
 
 </script>
