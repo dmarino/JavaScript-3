@@ -12,9 +12,9 @@
             <input type="button" id="buttonEast" value="East" @click="addtoCAParray(inputArray[2])">
             <input type="button" id="buttonSouth" value="South" @click="addtoCAParray(inputArray[1])">
             <input type="button" id="buttonWest" value="West" @click="addtoCAParray(inputArray[3])">
-            <div id="ListOfMovements"> 
+            <!-- <div id="ListOfMovements"> 
                 {{getCaptain}}
-            </div>
+            </div> -->
         </form>
         <form v-if="role == 'Navigator'">
             <label for="MovementList">Movement List:</label>
@@ -22,9 +22,9 @@
             <input type="button" id="buttonEast" value="East" @click="addtoNAVarray(inputArray[2])">
             <input type="button" id="buttonSouth" value="South" @click="addtoNAVarray(inputArray[1])">
             <input type="button" id="buttonWest" value="West" @click="addtoNAVarray(inputArray[3])">
-            <div id="ListOfMovements">
+<!--             <div id="ListOfMovements">
                 {{getNavigator}}
-            </div>
+            </div> -->
         </form>
     </div>
 
@@ -43,18 +43,42 @@
                 inputArray:["N","S","E","W"]
             }
             this.props={role: String }
-            this.injectActions(mapActions(['CaptainHistory', 'NavigatorHistory']));
-            this.injectGetters(mapGetters(['getCaptain', 'getNavigator']));
+            this.injectActions(['CaptainPosition', 'NavigatorPosition']);
+            this.injectGetters(['getCaptain', 'getNavigator']);
         }
 
         addtoCAParray(buttonReturn)
         {
-            this.CaptainHistory(buttonReturn)
+            let currentPos = this.getCaptain.currentPosition
+            let newPosition
+            switch (buttonReturn) {
+                
+                case "N":
+                    newPosition = {x:this.getCaptain.currentPosition.x -1,y:this.getCaptain.currentPosition.y}
+                    this.CaptainPosition(newPosition)                   
+                    break;
+                case "E":
+                    newPosition = {x:this.getCaptain.currentPosition.x,y:this.getCaptain.currentPosition.y +1}
+                    this.CaptainPosition(newPosition)
+                    break;
+                case "S":
+                    newPosition = {x:this.getCaptain.currentPosition.x +1,y:this.getCaptain.currentPosition.y}
+                    this.CaptainPosition(newPosition)
+                    break;
+                case "W":
+                    let newPosition = {x:this.getCaptain.currentPosition.x ,y:this.getCaptain.currentPosition.y-1}
+                    this.CaptainPosition(newPosition)
+                    break;
+            
+                default:
+                    break;
+            }
+            //this.CaptainHistory(buttonReturn)
         }
 
         addtoNAVarray(buttonReturn)
         {
-            this.NavigatorHistory(buttonReturn)
+            //this.NavigatorHistory(buttonReturn)
         }
         
     }

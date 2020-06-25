@@ -4,14 +4,26 @@
 
 export default class HistoryModel {
 
-    constructor ( History = [] ) {
-        this.History = History;
+    constructor ( ) {
+        //this.History = History;
         this.currentCounter = 0;
-
+        this.currentPosition = {x:0, y:0};
+        this.mapData = [];
+        for(let i = 0; i < 10; i++)
+        {
+            this.mapData[i] = []
+            for(let j = 0; j < 10; j++)
+            {
+                this.mapData[i][j] = "water"
+            }
+        }
     }
     
-    AddLocation(updateLocations)
+    AddLocation( position )
     {
-        this.History.splice(this.currentCounter++, updateLocations)
+        //this.History.splice(this.currentCounter++, updateLocations)
+        this.currentPosition.x = position.x
+        this.currentPosition.y = position.y
+        this.mapData[position.x][position.y] = "water-ship"
     }
 }
