@@ -5,9 +5,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
     <section class="engineer-container player-container inside-container">
         <playerInfo
-            name="Jonathan"
-            team="A"
-            role="Officer"
+            :name="player.name"
+            :team="player.team"
+            :role="player.role"
         />
         <div class="engineer-inside-container"> 
             <h2 class="title">Engineer</h2>

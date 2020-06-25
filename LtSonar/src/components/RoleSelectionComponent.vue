@@ -51,7 +51,6 @@
 
     .role-component {
         display: inline-block;
-
         text-align: center;
         height: 35%;
         width: 45%;

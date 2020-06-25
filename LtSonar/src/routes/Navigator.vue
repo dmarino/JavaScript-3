@@ -6,9 +6,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="navigator-container player-container inside-container">
         <playerInfo
-            name="Jonathan"
-            team="A"
-            role="Officer"
+            :name="player.name"
+            :team="player.team"
+            :role="player.role"
         />
         <div class="about">
             <h1 class="title">Navigator</h1>

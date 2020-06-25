@@ -7,9 +7,9 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 
     <section class="base-container player-container inside-container">
         <playerInfo
-            name="Jonathan"
-            team="A"
-            role="Officer"
+            :name="player.name"
+            :team="player.team"
+            :role="player.role"
         />
         <div class="first-officer">
             <div class="top-container">

@@ -40,9 +40,7 @@
                 name: "Record Panel",
                 recordArray:[],
                 arrayTracker:0,
-                inputArray:["N","S","E","W"],
-                
-
+                inputArray:["N","S","E","W"]
             }
             this.props={role: String }
             this.injectActions(mapActions(['CaptainHistory', 'NavigatorHistory']));
@@ -58,6 +56,7 @@
         {
             this.NavigatorHistory(buttonReturn)
         }
+        
     }
     export default new RecordCard ('keepRecord'/* , { subComponent, anotherComponent } */);
 </script>
