@@ -11,13 +11,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :role="player.role"
         />
         <pgNavbar></pgNavbar>
-        <div class="about">
-            <h1 class="title">Captain</h1>
-            <gridAndForm role="Captain">
-            </gridAndForm>
-            <keepRecord role="Captain">
-            </keepRecord>
+        <div class="main-content">
+            <div class="about">
+                <h1 class="title">Captain</h1>
+                <gridAndForm role="Captain" :currentPosition="this.getCaptain.currentPosition">
+                </gridAndForm>
+                <keepRecord role="Captain">
+                </keepRecord>
+            </div>
+            <pgChat speaker="Captain"></pgChat>
         </div>
+        
     </section>
 
 </template>
@@ -27,6 +31,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import keepRecord from '@/components/RecordCard'
     import playerInfo from '@/components/PlayerInfo.vue'
     import pgNavbar from '@/views/Navbar.vue'
+    import pgChat from '@/components/chatComponent.vue'
 
     class CaptainController extends Controller {
 
@@ -36,12 +41,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 name: 'Captain Control Panel',
                 isStarted: false,
             }
-        
-        this.injectGetters(['player']);
+            this.injectGetters(['player', 'getCaptain']);
+            this.injectActions(['CaptainPosition']);
         }
     }
 
-    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord, playerInfo, pgNavbar});
+    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord, playerInfo, pgNavbar, pgChat});
 
 </script>
 <style>
@@ -66,58 +71,4 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         text-shadow: 2px 2px #777;
     }
 
-    .water {
-        background-color: blue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .island {
-        background-color: green;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .water_traveled {
-        background-color: darkblue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .water_current_location {
-        background-color: cyan;
-        background-color: darkblue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .row {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .col {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .Right-Side {
-        margin-left: 10%;
-        height: 100%;
-        width: 30%;
-        border: 0.25em solid black;
-    }
-
-    .test {
-        width: 16em;
-        height: 16em;
-        border: 0.25em solid black;
-        background-color: darkblue;
-    }
 </style>

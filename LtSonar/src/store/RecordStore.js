@@ -27,8 +27,8 @@ export default {
 
     // PRIVATE: caled by actions to modify the state to prevent deadlock
     mutations: {
-        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.AddLocation(newPosition)},
-        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.AddLocation(newPosition)}
+        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.MoveLocation(newPosition)},
+        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.MoveLocation(newPosition)}
     },
 
     // PUBLIC: injected into components

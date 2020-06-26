@@ -12,18 +12,18 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             :role="player.role"
         />
         <pgNavbar></pgNavbar>
-        <div class="first-officer">
-            <div class="top-container">
-                <div class="first-officer-submarine">
+        <div class="main-content">
+            <div class="first-officer">
+                <div class="top-container">
+                    <div class="first-officer-submarine">
+                    </div>
+                    <div class="first-officer-damage">
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                    </div>
                 </div>
-                <div class="first-officer-damage">
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                </div>
-            </div>
-            <div>
                 <div class="first-officer-cards" >
                     <ltFirstOfficerCard
                         title="Mines"
@@ -69,6 +69,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                     ></ltFirstOfficerCard>
                 </div>
             </div>
+            <pgChat speaker="First Officer"></pgChat>
         </div>
     </section>
 
@@ -77,6 +78,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
     import Controller from '@/../lib/controller'
     import ltFirstOfficerCard from '@/components/firstOfficerCard'
     import playerInfo from '@/components/PlayerInfo.vue'
+    import pgChat from '@/components/chatComponent.vue'
     import pgNavbar from '@/views/Navbar.vue'
 
     class FirstOfficerController extends Controller {
@@ -120,18 +122,24 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo, pgNavbar });
+    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo, pgNavbar, pgChat });
 
 </script>
 <style>
 /* Local styles for this template */
+
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 
     .first-officer {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        margin:2vw;
         border: 1px solid black;
         background-color: lightgray;
         color: black;

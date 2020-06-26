@@ -10,13 +10,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :role="player.role"
         />
         <pgNavbar></pgNavbar>
-        <div class="engineer-inside-container"> 
-            <h2 class="title">Engineer</h2>
-            <div class="submarine-overview"></div>
-            <div class="engineer-areas">
-                <engineer-area  v-for="(item, index) in engineer.areas" :key="index" :area="item"></engineer-area>
+        <div class="main-content">
+            <div class="engineer-inside-container"> 
+                <h2 class="title">Engineer</h2>
+                <div class="submarine-overview"></div>
+                <div class="engineer-areas">
+                    <engineer-area  v-for="(item, index) in engineer.areas" :key="index" :area="item"></engineer-area>
+                </div>
             </div>
+            <pgChat speaker="Engineer"></pgChat>
         </div>
+        
     </section>
 
 </template>
@@ -25,6 +29,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import engineerArea  from '@/components/EngineerArea.vue'
     import playerInfo from '@/components/PlayerInfo.vue'
     import pgNavbar from '@/views/Navbar.vue'
+    import pgChat from '@/components/chatComponent.vue'
 
     class EngineerController extends Controller {
 
@@ -38,7 +43,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new EngineerController('lsEngineer', {engineerArea, playerInfo, pgNavbar});
+    export default new EngineerController('lsEngineer', {engineerArea, playerInfo, pgNavbar, pgChat});
 
 </script>
 <style scoped>

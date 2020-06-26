@@ -12,6 +12,7 @@ import PlayerStore from '@/store/playerStore'
 import FirstOfficerStore from '@/store/firstOfficerStore'
 import EngineerStore from '@/store/EngineerStore'
 import RecordStore from '@/store/RecordStore'
+import ChatStore from '@/store/ChatStore'
 
 // Store with modules
 const store = new Vuex.Store({
@@ -20,7 +21,8 @@ const store = new Vuex.Store({
         PlayerStore,
         FirstOfficerStore,
         EngineerStore,
-        RecordStore
+        RecordStore,
+        ChatStore
     }
 });
 

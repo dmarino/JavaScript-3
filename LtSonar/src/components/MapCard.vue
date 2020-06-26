@@ -6,14 +6,14 @@
 
 
     <div class="Left-Side">
-        <table class="map" v-if="role == 'Captain'">
+        <table class="map" v-if="role == 'Captain'" :key="this.getCaptain.moveCounter">
             <tr v-for="(row, i) in this.getCaptain.mapData" :key="i" class="row">
-                <td @click="doClick($event, i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" ></td>
+                <td @click="doClick(i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" class="unit-cell" ></td>
             </tr>
         </table>
-        <table class="map" v-if="role == 'Navigator'">
+        <table class="map" v-if="role == 'Navigator'" :key="this.getNavigator.moveCounter">
             <tr v-for="(row, i) in this.getNavigator.mapData" :key="i" class="row">
-                <td @click="doClick($event, i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" ></td>
+                <td @click="doClick(i, j)" v-for="(col, j) in row" :key="j" v-bind:class="col" class="unit-cell"></td>
             </tr>
         </table>
     </div>
@@ -31,43 +31,38 @@
             this.vm = {
                 name: 'Control Panel',
                 isStarted: false,
-                isFirstPosition: false,
                 row: [
                     "A", "B", "C", "D", "E", "F", "G", "H", "I", "K"
-                ]
+                ],
             }
 
             this.props = {
-                role: String
+                role: String,
+                currentPosition: Object
             }
             this.injectActions(['CaptainPosition', 'NavigatorPosition']);
             this.injectGetters(['getCaptain', 'getNavigator']);
 
         }
 
-        doClick(event, i, j)
+        doClick(i, j)
         {
-            if( this.isFirstPosition == false)
-            {
-                if(this.role == "Captain")
-                {
-                    console.log("ship")
+
+            if(this.role == "Captain") {
+                if (this.getCaptain.moveCounter == 0) {
                     let newPosition = {x:i,y:j}
                     this.CaptainPosition(newPosition)
+                    this.$forceUpdate();
                 }
-                else if (this.role == "Navigator")
-                {
-                    let newPosition = {x:i,y:j}
-                    this.NavigatorPosition(newPosition)
-                }
-                this.isFirstPosition = true;
-            }
-            else
-            {
-                console.log("x " + this.getCaptain.currentPosition.x)
-                console.log("y " + this.getCaptain.currentPosition.y)
             }
             
+            else if (this.role == "Navigator") {
+                if (this.getNavigator.moveCounter == 0) {
+                    let newPosition = {x:i,y:j}
+                    this.NavigatorPosition(newPosition)
+                    this.$forceUpdate();
+                }
+            }
         }
 
     }
@@ -76,10 +71,7 @@
 
 </script>
 <style scoped>
-    /*
-    Add "scoped" attribute to limit CSS to this component only <style scoped>
-    styles that are specific to this component only, not sub-children
-    */
+
     .Left-Side {
         width: 100%;
         height: 100%;
@@ -100,66 +92,27 @@
         text-shadow: 2px 2px #777;
     }
 
-    .water {
-        background-color: blue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
+    .map {
+        border-collapse: collapse;
     }
 
-    .water-ship{
-        background-color: red;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .island {
-        background-color: green;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .water_traveled {
-        background-color: darkblue;
-        width: 4em;
-        height: 4em;
+    .unit-cell {
+        width: 3em;
+        height: 3em;
         border: 0.25em solid black;
     }
 
     .water_current_location {
         background-color: cyan;
+    }
+
+    .water {
+        background-color: blue;
+    }
+
+    .water_traveled {
         background-color: darkblue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .row {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .col {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .Right-Side {
-        margin-left: 10%;
-        height: 100%;
-        width: 30%;
-        border: 0.25em solid black;
-    }
-
-    .test {
-        width: 16em;
-        height: 16em;
-        border: 0.25em solid black;
-        background-color: darkblue;
+    
     }
 
 </style>
