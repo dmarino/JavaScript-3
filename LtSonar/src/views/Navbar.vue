@@ -7,7 +7,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <nav id="navigation-wrapper" class="grid-nav area vue-component">
+    <nav id="navigation-wrapper" class="grid-nav area vue-componenxt">
         <div id="menu-container" class="menu flexbox">
             <div class="navbar flexitem">
                 <ul id="ul-sidenav">
@@ -41,5 +41,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 </script>
 
-<style>
+<style scoped>
+
+
 </style>

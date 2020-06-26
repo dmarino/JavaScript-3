@@ -7,27 +7,29 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 
     <section class="base-container player-container inside-container">
         <playerInfo
-            name="Jonathan"
-            team="A"
-            role="Officer"
+            :name="player.name"
+            :team="player.team"
+            :role="player.role"
         />
-        <div class="first-officer">
-            <div class="top-container">
-                <div class="first-officer-submarine">
+        <pgNavbar></pgNavbar>
+        <div class="main-content">
+            <div class="first-officer">
+                <div class="top-container">
+                    <div class="first-officer-submarine">
+                    </div>
+                    <div class="first-officer-damage">
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                        <div class="first-officer-damage-container"></div>
+                    </div>
                 </div>
-                <div class="first-officer-damage">
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                    <div class="first-officer-damage-container"></div>
-                </div>
-            </div>
-            <div>
                 <div class="first-officer-cards" >
                     <ltFirstOfficerCard
                         title="Mines"
                         imageUrl="mines.png"
                         infoImageUrl="mines-info.png"
+                        v-bind:isActive = "minesStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onMinesReady"
                     ></ltFirstOfficerCard>
@@ -35,6 +37,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Drones"
                         imageUrl="drones.png"
                         infoImageUrl="drones-info.png"
+                        v-bind:isActive = "dronesStatus"
                         v-bind:numberOfItems="4"
                         @weaponReady="onDronesReady"
                     ></ltFirstOfficerCard>
@@ -42,6 +45,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Silence"
                         imageUrl="silence.png"
                         infoImageUrl="silence-info.png"
+                        v-bind:isActive = "silenceStatus"
                         v-bind:numberOfItems="5"
                         @weaponReady="onSilenceReady"
                     ></ltFirstOfficerCard>
@@ -51,6 +55,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Torpedo"
                         imageUrl="torpedo.png"
                         infoImageUrl="torpedo-info.png"
+                        v-bind:isActive = "torpedoStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onTorpedoReady"
                     ></ltFirstOfficerCard>
@@ -58,11 +63,13 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Sonar"
                         imageUrl="sonar.png"
                         infoImageUrl="sonar-info.png"
+                        v-bind:isActive = "sonarStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onSonarReady"
                     ></ltFirstOfficerCard>
                 </div>
             </div>
+            <pgChat speaker="First Officer"></pgChat>
         </div>
     </section>
 
@@ -71,14 +78,13 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
     import Controller from '@/../lib/controller'
     import ltFirstOfficerCard from '@/components/firstOfficerCard'
     import playerInfo from '@/components/PlayerInfo.vue'
-    
+    import pgChat from '@/components/chatComponent.vue'
+    import pgNavbar from '@/views/Navbar.vue'
+
     class FirstOfficerController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            this.vm = {
-            }
-
             this.methods = {
                 onMinesReady (value) {
                     this.setMinesStatus(value);
@@ -115,12 +121,32 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             );
         }
     }
-    
-    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo });
+
+    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo, pgNavbar, pgChat });
 
 </script>
 <style>
 /* Local styles for this template */
+
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .first-officer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border: 1px solid black;
+        background-color: lightgray;
+        color: black;
+        height: 78vh;
+        width: 80vw;
+    }
+
     .top-container {
         margin-top: 20px;
         display: flex;
@@ -149,19 +175,6 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         width: 100%;
     }
 
-    .first-officer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
-        color: black;
-        height: 80vh;
-        width: 80vw;
-    }
-
     .first-officer-submarine {
         width:350px;
         height: 100px;
@@ -175,4 +188,5 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         flex-wrap: wrap;
         justify-content: space-around;
     }
+
 </style>

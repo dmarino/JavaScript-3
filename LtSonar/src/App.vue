@@ -6,18 +6,7 @@
 
     <main class="vue-main-rootcomponent">
 
-        <!--<pgTittle></pgTittle>-->
-
-        <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
         <router-view></router-view>
-
-        <!-- <div class="dialog-container">
-        </div>
-        <div class="loader">
-            <svg viewBox="0 0 32 32" width="32" height="32">
-                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-            </svg>
-        </div> -->
 
     </main>
 
@@ -235,26 +224,25 @@
     .menu { background: rgba(0, 0, 0, 0); }
 
     .navbar{
-        margin-top: 2em;
+        margin-top: 0.5em;
         width: 100%;
         height: 100%;
     }
 
     ul {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: flex-start;
         list-style-type: none;
         overflow: hidden;
     }
 
     li {
-        background: #D10034;
-        float: left;
+        background: #333333;
         margin-top: 0.5em;
         margin-bottom: 0.5em;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        margin-left: 0.5em;
+        margin-right: 0.5em;
     }
 
     li:hover {
@@ -315,7 +303,7 @@
         align-items: center;
     }
 
-    .btn{
+    .btn {
         background-color: white;
         color: black;
         height: 40px;
@@ -328,8 +316,6 @@
         background-color: #555555;
         color: white;
     }
-
-
 
     /* Heading Styles */
     h1 {

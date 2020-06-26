@@ -6,20 +6,21 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="navigator-container player-container inside-container">
         <playerInfo
-            name="Jonathan"
-            team="A"
-            role="Officer"
+            :name="player.name"
+            :team="player.team"
+            :role="player.role"
         />
-        <div class="about">
-            <h1 class="title">Navigator</h1>
-            <gridAndForm>
-            </gridAndForm>
-            <div class="Right-Side">
-                <form class="make-notes">
-                </form>
-                <div class="hold-notes">
-                </div>
+        <pgNavbar></pgNavbar>
+        <div class="main-content">
+            <div class="about">
+                <h1 class="title">Navigator</h1>
+                <gridAndForm role="Navigator" :currentPosition="this.getNavigator.currentPosition">
+                </gridAndForm>
+                <keepRecord role="Navigator">
+                </keepRecord>
+            
             </div>
+            <pgChat speaker="Navigator"></pgChat>
         </div>
     </section>
 
@@ -27,8 +28,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import gridAndForm from '@/components/MapCard.vue'
+    import keepRecord from '@/components/RecordCard'
     import playerInfo from '@/components/PlayerInfo.vue'
-
+    import pgNavbar from '@/views/Navbar.vue'
+    import pgChat from '@/components/chatComponent.vue'
+    
     class NavigatorController extends Controller {
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
@@ -37,11 +41,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 isStarted: false,
             }
             
-            this.injectGetters(['player']);
+            this.injectGetters(['player', 'getNavigator']);
         }
     }
 
-    export default new NavigatorController('lsNavigator', {gridAndForm, playerInfo});
+    export default new NavigatorController('lsNavigator', {gridAndForm, keepRecord, playerInfo, pgNavbar, pgChat});
     
 
 </script>
@@ -67,59 +71,5 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         text-shadow: 2px 2px #777;
     }
 
-    .water {
-        background-color: blue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .island {
-        background-color: green;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .water_traveled {
-        background-color: darkblue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .water_current_location {
-        background-color: cyan;
-        background-color: darkblue;
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .row {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .col {
-        width: 4em;
-        height: 4em;
-        border: 0.25em solid black;
-    }
-
-    .Right-Side {
-        margin-left: 10%;
-        height: 100%;
-        width: 30%;
-        border: 0.25em solid black;
-    }
-
-    .test {
-        width: 16em;
-        height: 16em;
-        border: 0.25em solid black;
-        background-color: darkblue;
-    }
 </style>
 

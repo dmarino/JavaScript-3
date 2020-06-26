@@ -21,20 +21,20 @@ export default {
     // PUBLIC: injected into components
     // called to do things to the state via ajax and mutations
     actions: {
-        CaptainHistory: ({commit}, newPosition) => commit('SET_NEW_CAPTAIN_HISTORY', newPosition),
-        NavigatorHistory: ({commit}, newPosition) => commit('SET_NEW_NAVIGATOR_HISTORY', newPosition)
+        CaptainPosition: ({commit}, newPosition) => commit('SET_NEW_CAPTAIN_HISTORY', newPosition),
+        NavigatorPosition: ({commit}, newPosition) => commit('SET_NEW_NAVIGATOR_HISTORY', newPosition)
     },
 
     // PRIVATE: caled by actions to modify the state to prevent deadlock
     mutations: {
-        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.AddLocation(newPosition)},
-        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.AddLocation(newPosition)}
+        SET_NEW_CAPTAIN_HISTORY: (state, newPosition) => {state.captain.MoveLocation(newPosition)},
+        SET_NEW_NAVIGATOR_HISTORY: (state, newPosition) => {state.navigator.MoveLocation(newPosition)}
     },
 
     // PUBLIC: injected into components
     // called to retrieve state data from the store
     getters: {
-        getCaptain: state =>{ return state.captain.History},
-        getNavigator: state => {return state.navigator.History}
+        getCaptain: state =>{ return state.captain},
+        getNavigator: state => {return state.navigator}
     },
 }
