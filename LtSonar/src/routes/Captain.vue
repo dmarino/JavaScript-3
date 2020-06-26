@@ -10,6 +10,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :team="player.team"
             :role="player.role"
         />
+        <pgNavbar></pgNavbar>
         <div class="about">
             <h1 class="title">Captain</h1>
             <gridAndForm role="Captain">
@@ -25,6 +26,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import gridAndForm from '@/components/MapCard'
     import keepRecord from '@/components/RecordCard'
     import playerInfo from '@/components/PlayerInfo.vue'
+    import pgNavbar from '@/views/Navbar.vue'
 
     class CaptainController extends Controller {
 
@@ -39,7 +41,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord, playerInfo});
+    export default new CaptainController('lsCaptain', {gridAndForm, keepRecord, playerInfo, pgNavbar});
 
 </script>
 <style>

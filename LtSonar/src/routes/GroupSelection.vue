@@ -13,6 +13,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 </template>
 <script>
+
     import Controller from '@/../lib/controller'
     import teamComponent from '@/components/TeamChoosingComponent.vue'
 
@@ -32,9 +33,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new GroupController('pgGroup',{teamComponent});
-
+    export default new GroupController('pgGroup',{ teamComponent });
 </script>
+
 <style>
 /* Local styles for this template */
     .group-selection {

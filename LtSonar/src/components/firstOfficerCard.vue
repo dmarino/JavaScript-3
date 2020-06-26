@@ -8,14 +8,14 @@
 <template>
 
     <div class="fo-card-style">
-        <div class="fo-card-btns" v-on:click="activeWeapon">  
+        <div :id="title + '-fo-card'" class="fo-card-btns" v-on:click="activeWeapon">  
             <h3 class="fo-card-title">{{title}}</h3>      
             <div class="fo-card-image" :style="FOImage"></div>
             <div v-for="index in numberOfItems" :key="index" :class="`fo-side-btn-${index}`" class="fo-side-btn" ></div>
         </div>
+        <button :disabled="!isActive" v-on:click="useWeapon">Use Weapon</button>
         <div class="fo-card-info" :style="FOInfoImage">
         </div>
-        <button v-if="isActive">Click</button>
     </div>
 
 </template>
@@ -25,19 +25,13 @@
     class FirstOfficerCardController extends Controller {
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
-            this.vm = {
-                isActive: false,
-            }
 
             this.props = { 
                 title: String,
                 imageUrl: String,
                 infoImageUrl: String,
-                numberOfItems: Number
-            }
-
-            this.create = {
-
+                numberOfItems: Number,
+                isActive: Boolean
             }
         }
 
@@ -56,6 +50,7 @@
         activeWeapon(event) { 
             let card = event.currentTarget;
             let counter = 1;
+
             for (let i = 2; i < card.childNodes.length; i++) {
                 if (!card.childNodes[i].classList.contains("fo-side-btn-active"))
                 {
@@ -65,15 +60,24 @@
                 counter++;
             }
             
-            if (counter >= this.$options.propsData.numberOfItems )
-            {
-                this.isActive = true
+            if (counter >= this.$options.propsData.numberOfItems ) {
                 this.$emit('weaponReady', true)
-                
             }
             else {
                 this.$emit('weaponReady', false)
             }
+        }
+
+        useWeapon() {
+            this.$emit('weaponReady', false);
+            let card = document.getElementById(`${this.$options.propsData.title}-fo-card`);
+                for (let i = 2; i < card.childNodes.length; i++) {
+                if (card.childNodes[i].classList.contains("fo-side-btn-active"))
+                {
+                    card.childNodes[i].classList.remove("fo-side-btn-active");
+                } 
+            };
+            
         }
     }
 
@@ -86,8 +90,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        height: 350px;
-        width: 300px;
+        height: 300px;
+        width: 250px;
         background-color: #444444;
         border: 2px solid white;
         border-radius: 5px;
@@ -104,8 +108,8 @@
 
     .fo-card-title {
         position: relative;
-        top:  10px;
-        right: 125px;
+        top:  0px;
+        right: 100px;
         text-transform: uppercase;
         text-align: right;
     }
@@ -115,8 +119,8 @@
         top:50%;
         left:50%;
         transform: translate(-50%, -50%);
-        width:130px;
-        height:130px;
+        width:80px;
+        height:80px;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius:50%;
@@ -129,8 +133,8 @@
         transform: translate(-50%, -50%) rotate(45deg);
         border: 20px solid white;
         display: inline-block;
-        width:180px;
-        height:180px;
+        width:120px;
+        height:120px;
         border-radius: 50%;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -141,8 +145,8 @@
         content: '';
         display: block;
         position: absolute;
-        width: 180px;
-        height: 180px;
+        width:120px;
+        height:120px;
         left: -20px;
         top: -20px;
         transform: rotate(40deg);

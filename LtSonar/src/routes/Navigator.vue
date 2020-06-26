@@ -10,6 +10,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :team="player.team"
             :role="player.role"
         />
+        <pgNavbar></pgNavbar>
         <div class="about">
             <h1 class="title">Navigator</h1>
             <gridAndForm role="Navigator">
@@ -25,7 +26,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import gridAndForm from '@/components/MapCard.vue'
     import keepRecord from '@/components/RecordCard'
     import playerInfo from '@/components/PlayerInfo.vue'
-
+    import pgNavbar from '@/views/Navbar.vue'
+    
     class NavigatorController extends Controller {
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
@@ -38,7 +40,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new NavigatorController('lsNavigator', {gridAndForm, keepRecord, playerInfo});
+    export default new NavigatorController('lsNavigator', {gridAndForm, keepRecord, playerInfo, pgNavbar});
     
 
 </script>

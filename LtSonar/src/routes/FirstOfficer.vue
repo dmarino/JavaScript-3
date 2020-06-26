@@ -11,6 +11,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             :team="player.team"
             :role="player.role"
         />
+        <pgNavbar></pgNavbar>
         <div class="first-officer">
             <div class="top-container">
                 <div class="first-officer-submarine">
@@ -28,6 +29,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Mines"
                         imageUrl="mines.png"
                         infoImageUrl="mines-info.png"
+                        v-bind:isActive = "minesStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onMinesReady"
                     ></ltFirstOfficerCard>
@@ -35,6 +37,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Drones"
                         imageUrl="drones.png"
                         infoImageUrl="drones-info.png"
+                        v-bind:isActive = "dronesStatus"
                         v-bind:numberOfItems="4"
                         @weaponReady="onDronesReady"
                     ></ltFirstOfficerCard>
@@ -42,6 +45,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Silence"
                         imageUrl="silence.png"
                         infoImageUrl="silence-info.png"
+                        v-bind:isActive = "silenceStatus"
                         v-bind:numberOfItems="5"
                         @weaponReady="onSilenceReady"
                     ></ltFirstOfficerCard>
@@ -51,6 +55,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Torpedo"
                         imageUrl="torpedo.png"
                         infoImageUrl="torpedo-info.png"
+                        v-bind:isActive = "torpedoStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onTorpedoReady"
                     ></ltFirstOfficerCard>
@@ -58,6 +63,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         title="Sonar"
                         imageUrl="sonar.png"
                         infoImageUrl="sonar-info.png"
+                        v-bind:isActive = "sonarStatus"
                         v-bind:numberOfItems="3"
                         @weaponReady="onSonarReady"
                     ></ltFirstOfficerCard>
@@ -71,14 +77,12 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
     import Controller from '@/../lib/controller'
     import ltFirstOfficerCard from '@/components/firstOfficerCard'
     import playerInfo from '@/components/PlayerInfo.vue'
-    
+    import pgNavbar from '@/views/Navbar.vue'
+
     class FirstOfficerController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            this.vm = {
-            }
-
             this.methods = {
                 onMinesReady (value) {
                     this.setMinesStatus(value);
@@ -115,12 +119,26 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             );
         }
     }
-    
-    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo });
+
+    export default new FirstOfficerController('lsFirstOfficer', { ltFirstOfficerCard, playerInfo, pgNavbar });
 
 </script>
 <style>
 /* Local styles for this template */
+
+    .first-officer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin:2vw;
+        border: 1px solid black;
+        background-color: lightgray;
+        color: black;
+        height: 78vh;
+        width: 80vw;
+    }
+
     .top-container {
         margin-top: 20px;
         display: flex;
@@ -149,19 +167,6 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         width: 100%;
     }
 
-    .first-officer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
-        color: black;
-        height: 80vh;
-        width: 80vw;
-    }
-
     .first-officer-submarine {
         width:350px;
         height: 100px;
@@ -175,4 +180,5 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         flex-wrap: wrap;
         justify-content: space-around;
     }
+
 </style>

@@ -9,6 +9,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :team="player.team"
             :role="player.role"
         />
+        <pgNavbar></pgNavbar>
         <div class="engineer-inside-container"> 
             <h2 class="title">Engineer</h2>
             <div class="submarine-overview"></div>
@@ -23,6 +24,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import Controller from '@/../lib/controller'
     import engineerArea  from '@/components/EngineerArea.vue'
     import playerInfo from '@/components/PlayerInfo.vue'
+    import pgNavbar from '@/views/Navbar.vue'
 
     class EngineerController extends Controller {
 
@@ -36,7 +38,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new EngineerController('lsEngineer', {engineerArea, playerInfo});
+    export default new EngineerController('lsEngineer', {engineerArea, playerInfo, pgNavbar});
 
 </script>
 <style scoped>
