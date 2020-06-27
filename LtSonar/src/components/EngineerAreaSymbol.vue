@@ -34,31 +34,11 @@
 
                     if(this.component.type!=" "){
 
-                        if(this.component.circuit==-1){
-                            var symbol={}
-                            symbol.areaPos = this.areaPos
-                            symbol.pos = this.component.pos
-                            this.setSymbolStatus(symbol)
-                        }
-                        else{
-                            if(this.engineer.circuits[this.component.circuit].amountCompromised!=3){
-                                var symbol={}
-                                symbol.areaPos = this.areaPos
-                                symbol.pos = this.component.pos
-                                this.setSymbolStatus(symbol)                               
-                                this.addSymbolOFCircuit(this.component.circuit)
-                            }
-                            else if(this.engineer.circuits[this.component.circuit].amountCompromised==3){
-
-                                var circuit = this.engineer.circuits[this.component.circuit]
-
-                                for(var i =0; i< circuit.symbols.length;i++ ){
-                                    this.resetStatus(circuit.symbols[i])
-                                    this.resetCircuit(this.component.circuit)
-                                }
-                            }
-                        }
-
+                        var symbol={}
+                        symbol.areaPos = this.areaPos
+                        symbol.pos = this.component.pos
+                        symbol.circuit = this.component.circuit
+                        this.setSymbolStatus(symbol)
                         this.endTurn();
                     }
 

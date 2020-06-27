@@ -12,23 +12,34 @@ export default {
     actions: {
         setSymbolStatus({commit}, symbol) {
             commit('SET_SYMBOL_COMP',symbol);
-        },
-        resetStatus({commit}, symbol) {
-            commit('RESET_SYMBOL',symbol);
-        },
-        addSymbolOFCircuit({commit}, circuitPos){
-            commit('ADD_SYMBOL_CIRCUIT',circuitPos);
-        },
-        resetCircuit({commit}, circuitPos) {
-            commit('RESET_CIRCUIT',circuitPos);
         }
     },
 
     mutations: {
-        SET_SYMBOL_COMP:   ( state, symbol )  => { state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = true },
-        RESET_SYMBOL:   ( state, symbol )  => { state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = false },
-        ADD_SYMBOL_CIRCUIT: ( state, circuitPos )  => { state.engineer.circuits[circuitPos].amountCompromised++},
-        RESET_CIRCUIT: ( state, circuitPos )  => { state.engineer.circuits[circuitPos].amountCompromised=0}
+        SET_SYMBOL_COMP:   ( state, symbol )  => { 
+
+            if(symbol.circuit==-1){
+                state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = true 
+                
+            }
+            else{
+                if(state.engineer.circuits[symbol.circuit].amountCompromised!=state.engineer.circuits.length){
+                    state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = true 
+                    state.engineer.circuits[symbol.circuit].amountCompromised++
+                }
+                else{
+
+                    var circuit = state.engineer.circuits[symbol.circuit]
+
+                    for(var i =0; i< circuit.symbols.length;i++ ){
+                        var s = circuit.symbols[i];
+                        state.engineer.areas[s.areaPos].areaGrid[s.pos].comprommised = false
+                        state.engineer.circuits[symbol.circuit].amountCompromised=0
+                    }
+                }
+            }
+            
+        }
     },
 
     getters: {
