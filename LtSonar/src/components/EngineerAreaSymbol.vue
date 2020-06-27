@@ -58,15 +58,14 @@
                                 }
                             }
                         }
+
+                        this.endTurn();
                     }
 
                 }
             }
 
-            this.injectActions(['setSymbolStatus']);
-            this.injectActions(['resetStatus']);
-            this.injectActions(['addSymbolOFCircuit']);
-             this.injectActions(['resetCircuit']);
+            this.injectActions(['setSymbolStatus','resetStatus','addSymbolOFCircuit','resetCircuit', 'endTurn']);
             this.injectGetters(['engineer'])            
         }
 

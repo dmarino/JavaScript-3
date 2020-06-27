@@ -103,12 +103,4 @@
         background-image:url("../assets/reactor.png");
     }
 
-    .blackout{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0px;
-        background: rgba(255, 255, 255, 0.5);
-    }
-
 </style>

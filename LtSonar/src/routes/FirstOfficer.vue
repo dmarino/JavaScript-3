@@ -10,6 +10,7 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
             :name="player.name"
             :team="player.team"
             :role="player.role"
+            :turn="gameState.roles[gameState.rolesTurn]"
         />
         <pgNavbar></pgNavbar>
         <div class="main-content">
@@ -68,6 +69,10 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                         @weaponReady="onSonarReady"
                     ></ltFirstOfficerCard>
                 </div>
+                
+                <div class="blackout" v-if="gameState.roles[gameState.rolesTurn] != name"></div>
+                <!--un comment this to see the real turn behaviour-->
+                <!--<div class="blackout" v-if="gameState.roles[gameState.rolesTurn]!=player.role || player.role != name "></div>-->
             </div>
             <pgChat speaker="First Officer"></pgChat>
         </div>
@@ -85,6 +90,9 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
+            this.vm = {
+                name: 'Firstofficer',
+            }
             this.methods = {
                 onMinesReady (value) {
                     this.setMinesStatus(value);
@@ -109,7 +117,8 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
                 'dronesStatus',
                 'silenceStatus',
                 'torpedoStatus',
-                'sonarStatus'
+                'sonarStatus',
+                'gameState'
             ]);
 
             this.injectActions(
@@ -145,6 +154,8 @@ Copyright (c) 2020. Jonathan Dean All Rights Reserved.
         color: black;
         height: 78vh;
         width: 80vw;
+
+        position: relative;
     }
 
     .top-container {

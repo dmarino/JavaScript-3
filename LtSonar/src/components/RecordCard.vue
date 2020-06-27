@@ -47,7 +47,7 @@
                 inputArray:["N","S","E","W"]
             }
             this.props={role: String }
-            this.injectActions(['CaptainPosition', 'NavigatorPosition']);
+            this.injectActions(['CaptainPosition', 'NavigatorPosition', 'endTurn']);
             this.injectGetters(['getCaptain', 'getNavigator']);
         }
 
@@ -77,6 +77,8 @@
                 default:
                     break;
             }
+                            
+            this.endTurn();
             //this.CaptainHistory(buttonReturn)
         }
 
@@ -107,6 +109,7 @@
                 default:
                     break;
             }
+            this.endTurn();
         }
         
     }

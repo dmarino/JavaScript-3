@@ -33,6 +33,8 @@
                 numberOfItems: Number,
                 isActive: Boolean
             }
+
+            this.injectActions(['endTurn']);
         }
 
         on_FOImage() {
@@ -66,6 +68,7 @@
             else {
                 this.$emit('weaponReady', false)
             }
+            this.endTurn();
         }
 
         useWeapon() {
@@ -77,7 +80,8 @@
                     card.childNodes[i].classList.remove("fo-side-btn-active");
                 } 
             };
-            
+
+            this.endTurn();
         }
     }
 

@@ -9,7 +9,7 @@
 
     <section class="team-choosing">  <!-- Just one main element per template -->
         <h1>{{ title }}</h1>
-        <roleComponent v-for="(item, index) in roles" :key="index" :title="item.name" name="none" :team="title">
+        <roleComponent v-for="(item, index) in this.gameState.roles" :key="index" :title="item" name="none" :team="title">
         </roleComponent>
     </section>
 
@@ -25,16 +25,11 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                roles:[
-                    { name: "Navigator" },
-                    { name: "Captain" },
-                    { name: "Firstofficer" },
-                    { name: "Engineer" },
-                ]
             }
             this.props = { // props are passed in when using this component
                 title: String
             }
+            this.injectGetters(['gameState'])
         }
     }
 

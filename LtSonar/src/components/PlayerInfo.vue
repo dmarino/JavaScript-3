@@ -6,6 +6,7 @@
         <h2 class="player-info-item"><span>Name: </span>{{name}}</h2>
         <h2 class="player-info-item"><span>Team: </span>{{team}}</h2>
         <h2 class="player-info-item"><span>Role: </span>{{role}}</h2>
+        <h2 class="player-info-item"><span>Turn: </span>{{turn}}</h2>
     </div>
 </template>
 <script>
@@ -18,9 +19,11 @@
             this.props = { 
                 name: String,
                 team: String,
-                role: String
+                role: String,
+                turn: String
             }
         }
+        
     }
 
     export default new PlayerInfo('playerInfo');

@@ -9,15 +9,20 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             :name="player.name"
             :team="player.team"
             :role="player.role"
+            :turn="gameState.roles[gameState.rolesTurn]"
         />
         <pgNavbar></pgNavbar>
         <div class="main-content">
             <div class="about">
-                <h1 class="title">Captain</h1>
+                <h1 class="title">{{name}}</h1>
                 <gridAndForm role="Captain" :currentPosition="this.getCaptain.currentPosition">
                 </gridAndForm>
                 <keepRecord role="Captain">
                 </keepRecord>
+
+                <div class="blackout" v-if="gameState.roles[gameState.rolesTurn] != name"></div>
+                <!--un comment this to see the real turn behaviour-->
+                <!--<div class="blackout" v-if="gameState.roles[gameState.rolesTurn]!=player.role || player.role != name"></div>-->
             </div>
             <pgChat speaker="Captain"></pgChat>
         </div>
@@ -38,10 +43,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                name: 'Captain Control Panel',
+                name: 'Captain',
                 isStarted: false,
             }
-            this.injectGetters(['player', 'getCaptain']);
+            this.injectGetters(['player', 'getCaptain', 'gameState']);
             this.injectActions(['CaptainPosition']);
         }
     }
@@ -65,6 +70,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         color: black;
         height: 78vh;
         width: 80vw;
+        position: relative;
     }
 
     .title {

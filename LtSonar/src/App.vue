@@ -63,6 +63,14 @@
         background: linear-gradient(to left , #265677, #10659c, #265677); 
     }
 
+    .blackout{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
     label {
         color: white;
         font-weight: 600;

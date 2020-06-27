@@ -13,19 +13,26 @@ export default {
 
     actions: {
 
-        endTurn({commit}, role, team) {
-
+        endTurn({commit}) {
+            commit('SET_ROLE_TURN');
         },    
     },
 
     mutations: {
         SET_TEAM_TURN: ( state, team ) => { state.gameState.teamTurn = team },
-        SET_ROLE_TURN: ( state, role ) => { state.gameState.roleTurn = role },
+        SET_ROLE_TURN: ( state) => { 
+            
+            if(state.gameState.rolesTurn == state.gameState.roles.length-1){
+                state.gameState.rolesTurn=0;
+                state.gameState.teamTurn = state.gameState.teamTurn == "A" ? "B":"A";
+            }
+            else{
+                state.gameState.rolesTurn++;
+            }
+        },
     },
 
     getters: {
-        teamTurn: state => state.gameState.teamTurn,
-        roleTurn: state => state.gameState.roleTurn,
-        roles: state=> state.gameState.roles,
+        gameState: state => state.gameState,
     },
 }

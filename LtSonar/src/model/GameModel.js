@@ -5,11 +5,11 @@
 export default class Game {
 
     constructor ( ) {
-        this.teamTurn = 0;
-        this.rolesTurn = "Captain";
+        this.teamTurn = "A";
+        this.rolesTurn = 0;
         this.roles = [
             "Captain",
-            "FirstOfficer",
+            "Firstofficer",
             "Engineer",
             "Navigator"
         ]
