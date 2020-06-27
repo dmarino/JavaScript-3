@@ -9,7 +9,10 @@
         <div class="area-grid">
             <lsAreaSymbol :component="item" v-for="(item, index) in area.areaGrid" :key="index" :areaPos="area.pos">
             </lsAreaSymbol>
+            <div class="blackout" v-if="!canClick()"></div>
         </div>
+
+
     </section>
 
 </template>
@@ -24,11 +27,21 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-
             }
             this.props = { // props are passed in when using this component
                 area: Object
             }
+            this.methods = {
+                canClick() { 
+
+                    var direction = this.getCaptain.History[this.getCaptain.History.length-1];
+                    if( direction != null && direction.charAt(0) == this.area.name){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            this.injectGetters(['getCaptain'])
         }
 
     }
@@ -58,6 +71,7 @@
         border-color: white;
         height: 70%;
         width: 100%;
+        position: relative;
 
         background: rgba(255, 255, 255, 0.2);
     }
@@ -87,6 +101,14 @@
 
     .B{
         background-image:url("../assets/reactor.png");
+    }
+
+    .blackout{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        background: rgba(255, 255, 255, 0.5);
     }
 
 </style>

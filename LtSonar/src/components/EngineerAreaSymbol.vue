@@ -7,7 +7,7 @@
 -->
 <template>
 
-    <div class="symbol" :class="component.type" v-on:click="select"><!-- Just one main element per template -->
+    <div class="symbol" :class="component.type" v-on:click="select" :style="EBorder"><!-- Just one main element per template -->
         <div class="x" v-show="component.comprommised"></div>
     </div>
 
@@ -32,14 +32,72 @@
             this.methods = {
                 select() { 
 
-                    var symbol={}
-                    symbol.areaPos = this.areaPos
-                    symbol.pos = this.component.pos
-                    this.setSymbolStatus(symbol)
+                    if(this.component.type!=" "){
+
+                        if(this.component.circuit==-1){
+                            var symbol={}
+                            symbol.areaPos = this.areaPos
+                            symbol.pos = this.component.pos
+                            this.setSymbolStatus(symbol)
+                        }
+                        else{
+                            if(this.engineer.circuits[this.component.circuit].amountCompromised!=3){
+                                var symbol={}
+                                symbol.areaPos = this.areaPos
+                                symbol.pos = this.component.pos
+                                this.setSymbolStatus(symbol)                               
+                                this.addSymbolOFCircuit(this.component.circuit)
+                            }
+                            else if(this.engineer.circuits[this.component.circuit].amountCompromised==3){
+
+                                var circuit = this.engineer.circuits[this.component.circuit]
+
+                                for(var i =0; i< circuit.symbols.length;i++ ){
+                                    this.resetStatus(circuit.symbols[i])
+                                    this.resetCircuit(this.component.circuit)
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
 
-            this.injectActions(['setSymbolStatus']);            
+            this.injectActions(['setSymbolStatus']);
+            this.injectActions(['resetStatus']);
+            this.injectActions(['addSymbolOFCircuit']);
+             this.injectActions(['resetCircuit']);
+            this.injectGetters(['engineer'])            
+        }
+
+        on_EBorder() {
+
+            if(this.component.circuit==0){
+                
+                return {
+                    border:"dashed",
+                    "border-color":"yellow"
+                };
+            }
+
+            if(this.component.circuit==1){
+                
+                return {
+                    border:"dashed",
+                    "border-color":"red"
+                };
+            }
+            if(this.component.circuit==2){
+                
+                return {
+                    border:"dashed",
+                    "border-color":"grey"
+                };
+            }
+
+            return {
+                border:"none"
+            };
         }
     }
 
@@ -61,6 +119,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        border-radius: 50%;
     }
 
     .Y{
@@ -90,6 +149,13 @@
         background-position: center;
 
         border-radius: 50%;
+    }
+    
+    .circuit-0{
+
+        background: yellow;
+        width: 100%;
+        height: 100%;
     }
 
 </style>

@@ -10,31 +10,31 @@ export default class Engineer {
                 pos:0,
                 areaGrid:[
                     { 
-                        type: "R", comprommised: false, pos:0
+                        type: "R", comprommised: false, pos:0, circuit:0
                     },
                     { 
-                        type: " ", comprommised: false, pos:1
+                        type: " ", comprommised: false, pos:1, circuit:-1
                     },
                     { 
-                        type: "Y", comprommised: false, pos:2
+                        type: "Y", comprommised: false, pos:2, circuit:0
                     },
                     { 
-                        type: " ", comprommised: false , pos:3
+                        type: " ", comprommised: false , pos:3, circuit:-1
                     },
                     { 
-                        type: " ", comprommised: false , pos:4
+                        type: " ", comprommised: false , pos:4, circuit:-1
                     },
                     { 
-                        type: "G", comprommised: false , pos:5
+                        type: "G", comprommised: false , pos:5, circuit:0
                     },
                     { 
-                        type: "G", comprommised: false , pos:6
+                        type: "G", comprommised: false , pos:6, circuit:-1
                     },
                     { 
-                        type: "B", comprommised: false , pos:7
+                        type: "B", comprommised: false , pos:7, circuit:-1
                     },
                     { 
-                        type: "B", comprommised: false , pos:8
+                        type: "B", comprommised: false , pos:8, circuit:-1
                     },
 
                 ]
@@ -44,31 +44,31 @@ export default class Engineer {
                 pos:1,
                 areaGrid:[
                     { 
-                        type: "Y", comprommised: false , pos:0
+                        type: "Y", comprommised: false , pos:0, circuit:1
                     },
                     { 
-                        type: " ", comprommised: false , pos:1
+                        type: " ", comprommised: false , pos:1, circuit:-1
                     },
                     { 
-                        type: " ", comprommised: false , pos:2
+                        type: " ", comprommised: false , pos:2, circuit:-1
                     },
                     { 
-                        type: "R", comprommised: false , pos:3
+                        type: "R", comprommised: false , pos:3, circuit:1
                     },
                     { 
-                        type: " ", comprommised: false , pos:4
+                        type: " ", comprommised: false , pos:4, circuit:-1
                     },
                     { 
-                        type: "Y", comprommised: false , pos:5
+                        type: "Y", comprommised: false , pos:5, circuit:1
                     },
                     { 
-                        type: "G", comprommised: false , pos:6
+                        type: "G", comprommised: false , pos:6, circuit:-1
                     },
                     { 
-                        type: "R", comprommised: false , pos:7
+                        type: "R", comprommised: false , pos:7, circuit:-1
                     },
                     { 
-                        type: "B", comprommised: false , pos:8
+                        type: "B", comprommised: false , pos:8, circuit:-1
                     },
 
                 ]
@@ -78,31 +78,31 @@ export default class Engineer {
                 pos:2,
                 areaGrid:[
                     { 
-                        type: "G", comprommised: false , pos:0
+                        type: "G", comprommised: false , pos:0, circuit:2
                     },
                     { 
-                        type: " ", comprommised: false , pos:1
+                        type: " ", comprommised: false , pos:1, circuit:-1
                     },
                     { 
-                        type: " ", comprommised: false , pos:2
+                        type: " ", comprommised: false , pos:2, circuit:-1
                     },
                     { 
-                        type: "Y", comprommised: false , pos:3
+                        type: "Y", comprommised: false , pos:3, circuit:2
                     },
                     { 
-                        type: " ", comprommised: false, pos:4
+                        type: " ", comprommised: false, pos:4, circuit:-1
                     },
                     { 
-                        type: "R", comprommised: false, pos:5
+                        type: "R", comprommised: false, pos:5, circuit:2
                     },
                     { 
-                        type: "R", comprommised: false, pos:6
+                        type: "R", comprommised: false, pos:6, circuit:-1
                     },
                     { 
-                        type: "B", comprommised: false, pos:7
+                        type: "B", comprommised: false, pos:7, circuit:-1
                     },
                     { 
-                        type: "Y", comprommised: false, pos:8
+                        type: "Y", comprommised: false, pos:8, circuit:-1
                     },
 
                 ]
@@ -112,31 +112,31 @@ export default class Engineer {
                 pos:3,
                 areaGrid:[
                     { 
-                        type: "G", comprommised: false, pos:0
+                        type: "G", comprommised: false, pos:0, circuit:1
                     },
                     { 
-                        type: " ", comprommised: false, pos:1
+                        type: " ", comprommised: false, pos:1, circuit:-1
                     },
                     { 
-                        type: " ", comprommised: false, pos:2
+                        type: " ", comprommised: false, pos:2, circuit:-1
                     },
                     { 
-                        type: "Y", comprommised: false, pos:3
+                        type: "Y", comprommised: false, pos:3, circuit:2
                     },
                     { 
-                        type: " ", comprommised: false, pos:4
+                        type: " ", comprommised: false, pos:4, circuit:-1
                     },
                     { 
-                        type: "R", comprommised: false, pos:5
+                        type: "R", comprommised: false, pos:5, circuit:0
                     },
                     { 
-                        type: "B", comprommised: false, pos:6 
+                        type: "B", comprommised: false, pos:6, circuit:-1
                     },
                     { 
-                        type: "G", comprommised: false, pos:7
+                        type: "G", comprommised: false, pos:7, circuit:-1
                     },
                     { 
-                        type: "B", comprommised: false, pos:8
+                        type: "B", comprommised: false, pos:8, circuit:-1
                     },
 
                 ]
@@ -144,9 +144,70 @@ export default class Engineer {
 
         ]
  
-        this.circuits =[{
-            
-            
-        }]
+        this.circuits =[
+            {
+                symbols:[
+                    {
+                        areaPos:0,
+                        pos:0
+                    },
+                    {
+                        areaPos:0,
+                        pos:2
+                    },
+                    {
+                        areaPos:0,
+                        pos:5
+                    },
+                    {
+                        areaPos:3,
+                        pos:5
+                    }
+                ],
+                amountCompromised:0
+            },
+            {
+                symbols:[
+                    {
+                        areaPos:1,
+                        pos:0
+                    },
+                    {
+                        areaPos:1,
+                        pos:3
+                    },
+                    {
+                        areaPos:1,
+                        pos:5
+                    },
+                    {
+                        areaPos:3,
+                        pos:0
+                    }
+                ],
+                amountCompromised:0
+            },
+            {
+                symbols:[
+                    {
+                        areaPos:2,
+                        pos:0
+                    },
+                    {
+                        areaPos:2,
+                        pos:3
+                    },
+                    {
+                        areaPos:2,
+                        pos:5
+                    },
+                    {
+                        areaPos:3,
+                        pos:3
+                    }
+                ],
+                amountCompromised:0
+            }
+        ]
     }
 }

@@ -11,13 +11,24 @@ export default {
 
     actions: {
         setSymbolStatus({commit}, symbol) {
-            console.log(symbol)
-            commit('SET_SYMBOL_STATUS',symbol);
+            commit('SET_SYMBOL_COMP',symbol);
         },
+        resetStatus({commit}, symbol) {
+            commit('RESET_SYMBOL',symbol);
+        },
+        addSymbolOFCircuit({commit}, circuitPos){
+            commit('ADD_SYMBOL_CIRCUIT',circuitPos);
+        },
+        resetCircuit({commit}, circuitPos) {
+            commit('RESET_CIRCUIT',circuitPos);
+        }
     },
 
     mutations: {
-        SET_SYMBOL_STATUS:   ( state, symbol )  => { state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = true }
+        SET_SYMBOL_COMP:   ( state, symbol )  => { state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = true },
+        RESET_SYMBOL:   ( state, symbol )  => { state.engineer.areas[symbol.areaPos].areaGrid[symbol.pos].comprommised = false },
+        ADD_SYMBOL_CIRCUIT: ( state, circuitPos )  => { state.engineer.circuits[circuitPos].amountCompromised++},
+        RESET_CIRCUIT: ( state, circuitPos )  => { state.engineer.circuits[circuitPos].amountCompromised=0}
     },
 
     getters: {
