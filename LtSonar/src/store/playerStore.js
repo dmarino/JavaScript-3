@@ -6,6 +6,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Player from '@/model/Player' 
 
+const Axios = require('axios');
+Axios.defaults.baseURL = "http://localhost:3000"
+
 export default {
     state: {
         player: new Player(),
@@ -14,7 +17,10 @@ export default {
     actions: {
 
         setName({commit}, name) {
-            commit('SET_NAME', name);
+            
+            Axios.post("/api/player/login", name)
+            .then(response => console.log(response))
+            //commit('SET_NAME', name);
         },
 
         setTeam({commit}, team){
