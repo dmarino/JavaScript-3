@@ -32,13 +32,17 @@
                 name: String
             }
 
-            this.injectActions(['setTeam']);
-            this.injectActions(['setRole']);
+            this.injectActions(['setTeam', 'setRole', 'updatePlayer']);
+            this.injectGetters(['player'])
         }
 
         select( ) {
-            this.setTeam(this.team)
-            this.setRole(this.title)
+
+
+            var nplayer = this.player;
+            nplayer.team = this.team;
+            nplayer.role = this.title;
+            this.updatePlayer(nplayer);
 
             this.$router.push('/' + this.title)
         }

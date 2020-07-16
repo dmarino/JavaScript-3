@@ -4,7 +4,8 @@
 
 export default class Player {
 
-    constructor ( name, team, role ) {
+    constructor ( id, name, team, role ) {
+        this.id = id;
         this.name = name;
         this.team = team;
         this.role = role;

@@ -11,8 +11,6 @@ const Path = require('path')
 const HTTP = require('http')
 const FileSystem = require('fs')
 
-//const Result = require('../lib/result')
-
 const PlayerAPI = require('./PlayerAPI.js')
 
 const PORT = 3000;
