@@ -38,7 +38,7 @@ class Server {
             .use( Express.urlencoded({ extended: false }))
             .use( Express.static( Path.join(__dirname, '../../public') ))
             .use( CORS( corsOptions )).options('/*', this.corsHandler )
-            .use('/api/player', PlayerAPI );
+            .use('/api/Players', PlayerAPI );
                
         this.run();
     }

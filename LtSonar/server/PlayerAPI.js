@@ -29,7 +29,7 @@ Router.post('/login', (req, res) =>{
     res.send(result)
 });
 
-Router.put('/update/:id', (req, res) =>{
+Router.post('/update/:id', (req, res) =>{
 
     //creates the representation of the result
     var result = new Result();

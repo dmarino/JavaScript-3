@@ -6,8 +6,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Player from '@/model/Player' 
 
-const Axios = require('axios');
-Axios.defaults.baseURL = "http://localhost:3000"
+import Connection from '@/../lib/Connection.js'
+
+const connection = new Connection()
 
 export default {
     state: {
@@ -23,11 +24,10 @@ export default {
                 name: name
             }
 
-            Axios.post("/api/player/login", info)
-                .then(response => response.data) //just takes the data out 
-                .then(data => data.error!=0? error =>{throw(error)} : data.payload) //here checks if there is an error in the server message
+            connection.post("/api/Players/login", info)
+                .then(data => data.error!=0? err =>{throw(error)} : data.payload) //here checks if there is an error in the server message
                 .then(player => {
-                    commit('SET_PLAYER', player); //here it actually just has the name and the id (if we are ussing data bases i prefer the ids than just the name)
+                    commit('SET_PLAYER', player); //here it actually just has the name and the id (if we are using databases i prefer the ids than just the name)
                 })
                 .catch(error=>{
                     alert(error); //shows the error to the user
@@ -47,15 +47,11 @@ export default {
         updatePlayer({commit}, player){
 
             //creates the url
-            var url = `/api/player/update/${player.id}`;
+            var url = `/api/Players/update/${player.id}`;
 
             //create the json to send
-             var info = {
-                player: player
-            }
 
-            Axios.put(url, info)
-                .then(response => response.data) //just takes the data out 
+            connection.post(url, player)
                 .then(data => data.error!=0? error =>{throw(error)} : data.payload) //here checks if there is an error in the server message
                 .then(p => {
                     commit('SET_PLAYER', player); //here i update the thing

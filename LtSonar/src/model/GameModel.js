@@ -2,6 +2,7 @@
 
 'use strict';
 
+
 export default class Game {
 
     constructor ( ) {
@@ -13,6 +14,26 @@ export default class Game {
             "Engineer",
             "Navigator"
         ]
+
+        this.teams = []
+        this.teams[0] ={
+            name: "team A",
+            players: {
+                captain: "",
+                firstofficer: "",
+                engineer:"",
+                navigator:""
+            }
+        }
+        this.teams[0] ={
+            name: "team B",
+            players: {
+                captain: "",
+                firstofficer: "",
+                engineer:"",
+                navigator:""
+            }
+        }
     }
     
 }
